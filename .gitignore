@@ -209,3 +209,17 @@ __marimo__/
 =======
 *.pyc\n__pycache__/\ndb.sqlite3\nvenv/\n.env
 >>>>>>> f641e98 (feat: estructura inicial del proyecto)
+
+# Android
+build/
+.idea/
+local.properties
+*.iml
+.gradle/
+
+# Django
+__pycache__/
+*.pyc
+db.sqlite3
+venv/
+.env
