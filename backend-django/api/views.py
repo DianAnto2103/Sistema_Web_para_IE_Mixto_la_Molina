@@ -10,22 +10,7 @@ from .serializers import (
     CalificacionSerializer, TallerSerializer, SolicitudTallerSerializer, HorarioSerializer
 )
 
-# ==================== AUTENTICACIÓN ====================
-@api_view(['POST'])
-def login(request):
-    username = request.data.get('username')
-    password = request.data.get('password')
-    user = authenticate(username=username, password=password)
-    if user:
-        return Response({
-            'success': True,
-            'user_id': user.id,
-            'username': user.username,
-            'role': 'docente' if hasattr(user, 'docente') else 'admin'
-        })
-    return Response({'success': False, 'error': 'Credenciales inválidas'}, status=400)
-
-# ==================== ALUMNOS (protegido) ====================
+#ALUMNOS (protegido)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def alumnos_list(request):
@@ -33,7 +18,7 @@ def alumnos_list(request):
     serializer = AlumnoSerializer(alumnos, many=True)
     return Response(serializer.data)
 
-# ==================== CURSOS (protegido) ====================
+#CURSOS (protegido)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def cursos_list(request):
@@ -41,7 +26,7 @@ def cursos_list(request):
     serializer = CursoSerializer(cursos, many=True)
     return Response(serializer.data)
 
-# ==================== BIMESTRES (protegido) ====================
+#BIMESTRES (protegido)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def bimestres_list(request):
@@ -49,7 +34,7 @@ def bimestres_list(request):
     serializer = BimestreSerializer(bimestres, many=True)
     return Response(serializer.data)
 
-# ==================== CALIFICACIONES (protegido) ====================
+#CALIFICACIONES (protegido)
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def calificaciones_list(request):
@@ -65,7 +50,7 @@ def calificaciones_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# ==================== CALIFICACIÓN INDIVIDUAL (para editar/eliminar) ====================
+#CALIFICACIÓN INDIVIDUAL (para editar/eliminar)
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def calificacion_detail(request, pk):
@@ -86,7 +71,7 @@ def calificacion_detail(request, pk):
         calificacion.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-# ==================== TALLERES (protegido) ====================
+#TALLERES (protegido)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def talleres_list(request):
@@ -94,7 +79,7 @@ def talleres_list(request):
     serializer = TallerSerializer(talleres, many=True)
     return Response(serializer.data)
 
-# ==================== SOLICITAR TALLER (protegido) ====================
+#SOLICITAR TALLER (protegido)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def solicitar_taller(request):
@@ -104,7 +89,7 @@ def solicitar_taller(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# ==================== HORARIOS (protegido) ====================
+#HORARIOS (protegido)
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def horarios_list(request):
