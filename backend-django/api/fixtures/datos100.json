@@ -1,0 +1,370 @@
+[
+  {
+    "model": "api.grado",
+    "pk": 1,
+    "fields": {
+      "nombre": "1ro",
+      "nivel": "Primaria"
+    }
+  },
+  {
+    "model": "api.grado",
+    "pk": 2,
+    "fields": {
+      "nombre": "2do",
+      "nivel": "Primaria"
+    }
+  },
+  {
+    "model": "api.docente",
+    "pk": 1,
+    "fields": {
+      "nombres": "María",
+      "apellidos": "Pérez",
+      "correo": "maria.perez@colegio.edu"
+    }
+  },
+  {
+    "model": "api.docente",
+    "pk": 2,
+    "fields": {
+      "nombres": "Juan",
+      "apellidos": "Gómez",
+      "correo": "juan.gomez@colegio.edu"
+    }
+  },
+  {
+    "model": "api.docente",
+    "pk": 3,
+    "fields": {
+      "nombres": "Carmen",
+      "apellidos": "Rojas",
+      "correo": "carmen.rojas@colegio.edu"
+    }
+  },
+  {
+    "model": "api.docente",
+    "pk": 4,
+    "fields": {
+      "nombres": "Luis",
+      "apellidos": "Mendoza",
+      "correo": "luis.mendoza@colegio.edu"
+    }
+  },
+  {
+    "model": "api.curso",
+    "pk": 1,
+    "fields": {
+      "nombre": "Matemática",
+      "descripcion": "Aritmética, geometría y resolución de problemas",
+      "docente": 1
+    }
+  },
+  {
+    "model": "api.curso",
+    "pk": 2,
+    "fields": {
+      "nombre": "Comunicación",
+      "descripcion": "Lectura, escritura y comprensión lectora",
+      "docente": 2
+    }
+  },
+  {
+    "model": "api.curso",
+    "pk": 3,
+    "fields": {
+      "nombre": "Ciencia y Tecnología",
+      "descripcion": "Biología, física y química básica",
+      "docente": 3
+    }
+  },
+  {
+    "model": "api.curso",
+    "pk": 4,
+    "fields": {
+      "nombre": "Inglés",
+      "descripcion": "Vocabulario, gramática y conversación",
+      "docente": 4
+    }
+  },
+  {
+    "model": "api.bimestre",
+    "pk": 1,
+    "fields": {
+      "nombre": "Bimestre 1",
+      "fecha_inicio": "2025-03-01",
+      "fecha_fin": "2025-04-30"
+    }
+  },
+  {
+    "model": "api.bimestre",
+    "pk": 2,
+    "fields": {
+      "nombre": "Bimestre 2",
+      "fecha_inicio": "2025-05-01",
+      "fecha_fin": "2025-06-30"
+    }
+  },
+  {
+    "model": "api.bimestre",
+    "pk": 3,
+    "fields": {
+      "nombre": "Bimestre 3",
+      "fecha_inicio": "2025-08-01",
+      "fecha_fin": "2025-09-30"
+    }
+  },
+  {
+    "model": "api.bimestre",
+    "pk": 4,
+    "fields": {
+      "nombre": "Bimestre 4",
+      "fecha_inicio": "2025-10-01",
+      "fecha_fin": "2025-12-15"
+    }
+  },
+  {
+    "model": "api.alumno",
+    "pk": 1,
+    "fields": {
+      "nombres": "Ana",
+      "apellidos": "Pérez García",
+      "correo": "ana.perez@estudiante.edu",
+      "fecha_nacimiento": "2017-05-10",
+      "grado": 1,
+      "seccion": "A"
+    }
+  },
+  {
+    "model": "api.alumno",
+    "pk": 2,
+    "fields": {
+      "nombres": "Luis",
+      "apellidos": "Gómez Rojas",
+      "correo": "luis.gomez@estudiante.edu",
+      "fecha_nacimiento": "2017-08-20",
+      "grado": 1,
+      "seccion": "A"
+    }
+  },
+  {
+    "model": "api.alumno",
+    "pk": 3,
+    "fields": {
+      "nombres": "Sofía",
+      "apellidos": "Mendoza López",
+      "correo": "sofia.mendoza@estudiante.edu",
+      "fecha_nacimiento": "2017-02-15",
+      "grado": 1,
+      "seccion": "B"
+    }
+  },
+  {
+    "model": "api.alumno",
+    "pk": 4,
+    "fields": {
+      "nombres": "Diego",
+      "apellidos": "Rojas Castro",
+      "correo": "diego.rojas@estudiante.edu",
+      "fecha_nacimiento": "2016-11-25",
+      "grado": 2,
+      "seccion": "A"
+    }
+  },
+  {
+    "model": "api.alumno",
+    "pk": 5,
+    "fields": {
+      "nombres": "Valentina",
+      "apellidos": "Paredes Soto",
+      "correo": "valentina.paredes@estudiante.edu",
+      "fecha_nacimiento": "2016-09-30",
+      "grado": 2,
+      "seccion": "A"
+    }
+  },
+  {
+    "model": "api.alumno",
+    "pk": 6,
+    "fields": {
+      "nombres": "Mateo",
+      "apellidos": "Luna Torres",
+      "correo": "mateo.luna@estudiante.edu",
+      "fecha_nacimiento": "2016-04-12",
+      "grado": 2,
+      "seccion": "B"
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 1,
+    "fields": {
+      "alumno": 1,
+      "curso": 1,
+      "nota": 16,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 2,
+    "fields": {
+      "alumno": 2,
+      "curso": 1,
+      "nota": 12,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 3,
+    "fields": {
+      "alumno": 3,
+      "curso": 1,
+      "nota": 18,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 4,
+    "fields": {
+      "alumno": 4,
+      "curso": 1,
+      "nota": 10,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 5,
+    "fields": {
+      "alumno": 1,
+      "curso": 2,
+      "nota": 15,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 6,
+    "fields": {
+      "alumno": 2,
+      "curso": 2,
+      "nota": 14,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 7,
+    "fields": {
+      "alumno": 4,
+      "curso": 2,
+      "nota": 11,
+      "bimestre": 1
+    }
+  },
+  {
+    "model": "api.calificacion",
+    "pk": 8,
+    "fields": {
+      "alumno": 1,
+      "curso": 1,
+      "nota": 17,
+      "bimestre": 2
+    }
+  },
+  {
+    "model": "api.taller",
+    "pk": 1,
+    "fields": {
+      "nombre": "Taller de Matemática",
+      "descripcion": "Refuerzo en operaciones básicas y resolución de problemas",
+      "dia": "Lunes",
+      "hora_inicio": "15:00:00",
+      "hora_fin": "16:30:00",
+      "cupos_totales": 20,
+      "docente": 1
+    }
+  },
+  {
+    "model": "api.taller",
+    "pk": 2,
+    "fields": {
+      "nombre": "Taller de Comunicación",
+      "descripcion": "Refuerzo en comprensión lectora y producción de textos",
+      "dia": "Miércoles",
+      "hora_inicio": "15:00:00",
+      "hora_fin": "16:30:00",
+      "cupos_totales": 15,
+      "docente": 2
+    }
+  },
+  {
+    "model": "api.taller",
+    "pk": 3,
+    "fields": {
+      "nombre": "Taller de Inglés",
+      "descripcion": "Refuerzo en vocabulario y conversación básica",
+      "dia": "Viernes",
+      "hora_inicio": "14:00:00",
+      "hora_fin": "15:30:00",
+      "cupos_totales": 10,
+      "docente": 4
+    }
+  },
+  {
+    "model": "api.horario",
+    "pk": 1,
+    "fields": {
+      "docente": 1,
+      "dia": "Lunes",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "10:00:00",
+      "curso": 1
+    }
+  },
+  {
+    "model": "api.horario",
+    "pk": 2,
+    "fields": {
+      "docente": 2,
+      "dia": "Martes",
+      "hora_inicio": "08:00:00",
+      "hora_fin": "10:00:00",
+      "curso": 2
+    }
+  },
+  {
+    "model": "api.horario",
+    "pk": 3,
+    "fields": {
+      "docente": 4,
+      "dia": "Jueves",
+      "hora_inicio": "10:00:00",
+      "hora_fin": "12:00:00",
+      "curso": 4
+    }
+  },
+  {
+    "model": "api.solicitudtaller",
+    "pk": 1,
+    "fields": {
+      "alumno": 1,
+      "taller": 1,
+      "fecha_solicitud": "2025-03-10T10:30:00Z",
+      "estado": "aprobado"
+    }
+  },
+  {
+    "model": "api.solicitudtaller",
+    "pk": 2,
+    "fields": {
+      "alumno": 2,
+      "taller": 2,
+      "fecha_solicitud": "2025-03-11T14:15:00Z",
+      "estado": "pendiente"
+    }
+  }
+]
