@@ -223,3 +223,6 @@ __pycache__/
 db.sqlite3
 venv/
 .env
+
+# Postman (contiene tokens y secretos)
+postman/
