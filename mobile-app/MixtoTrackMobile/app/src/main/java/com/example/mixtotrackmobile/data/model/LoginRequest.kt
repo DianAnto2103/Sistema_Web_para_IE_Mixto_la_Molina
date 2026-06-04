@@ -1,3 +1,6 @@
 package com.example.mixtotrackmobile.data.model
 
-data class LoginRequest()
+data class LoginRequest(
+    val username: String,
+    val password: String
+)

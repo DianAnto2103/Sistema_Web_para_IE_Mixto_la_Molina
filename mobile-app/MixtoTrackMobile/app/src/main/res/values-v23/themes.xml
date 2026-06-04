@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="Theme.MixtoTrackMobile" parent="Base.Theme.MixtoTrackMobile">
-        <!-- Transparent system bars for edge-to-edge. -->
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+    <style name="Theme.MixtoTrack" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="android:windowBackground">@color/background_login</item>
     </style>
 </resources>

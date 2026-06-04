@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Colores institucionales de Mixto La Molina -->
+    <color name="background_school">#F1F8E9</color>
+    <color name="primary">#2E7D32</color>
+    <color name="primary_dark">#1B5E20</color>
+    <color name="primary_light">#4CAF50</color>
+    <color name="accent">#FFC107</color>
+
+    <!-- Fondo de pantalla -->
+    <color name="background_login">#F1F8E9</color>
+
+    <!-- Colores de texto -->
+    <color name="text_primary">#1B5E20</color>
+    <color name="text_secondary">#558B2F</color>
+    <color name="text_tertiary">#9E9E9E</color>
+    <color name="white">#FFFFFF</color>
 </resources>
