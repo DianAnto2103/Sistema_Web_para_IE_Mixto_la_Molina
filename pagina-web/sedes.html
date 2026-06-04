@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sedes | I.E. 1278 Mixto La Molina</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS para mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Estilos específicos para sedes -->
+    <link rel="stylesheet" href="css/sedes.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo-colegio.png" alt="Logo" height="50" class="me-2">
+                <div>
+                    <h2 class="logo-text mb-0">I.E. 1278 Mixto La Molina</h2>
+                    <small class="text-muted">Excelencia educativa</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="matricula.html">Matrícula</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="sedes.html">Sedes</a></li>
+                    <li class="nav-item"><a class="btn-mixtotrack ms-2" href="http://localhost:8000/dashboard/" target="_blank"><i class="fas fa-chalkboard-user me-2"></i>MixtoTrack</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header de página -->
+    <section class="page-header-sedes">
+        <div class="container" data-aos="fade-up">
+            <h1><i class="fas fa-map-marker-alt me-3"></i>Nuestra Sede</h1>
+            <p class="lead">Conoce nuestras instalaciones y cómo llegar</p>
+        </div>
+    </section>
+
+    <!-- Información principal de la sede -->
+    <section class="sede-principal">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="sede-info-card">
+                        <div class="sede-badge">
+                            <i class="fas fa-star"></i> Sede Principal
+                        </div>
+                        <h2>I.E. 1278 Mixto La Molina</h2>
+                        <div class="sede-direccion">
+                            <i class="fas fa-map-pin"></i>
+                            <div>
+                                <strong>Dirección:</strong><br>
+                                 Jr. Cusco 416, La Molina, Lima 15024
+                            </div>
+                        </div>
+                        <div class="sede-ubicacion">
+                            <i class="fas fa-globe-americas"></i>
+                            <div>
+                                <strong>Ubigeo:</strong><br>
+                                LIMA - LIMA - LA MOLINA
+                            </div>
+                        </div>
+                        <div class="sede-horario">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horario de atención:</strong><br>
+                                Lunes a Viernes: 8:00 am - 5:00 pm<br>
+                                Sábados: 9:00 am - 1:00 pm
+                            </div>
+                        </div>
+                        <div class="sede-contacto">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Contacto:</strong><br>
+                                Teléfono: +51 922 354 466<br>
+                                Correo: mixtolamolina1278@gmail.com
+                            </div>
+                        </div>
+                        <div class="sede-transporte">
+                            <i class="fas fa-bus"></i>
+                            <div>
+                                <strong>¿Cómo llegar?</strong><br>
+                                <span class="badge bg-success me-2">Bus</span> Corredor Rojo - Ruta 201, 204, 206<br>
+                                <span class="badge bg-success me-2">Metro</span> Estación La Molina (a 15 min)<br>
+                                <span class="badge bg-success me-2">Taxi</span> Servicios por aplicación
+                            </div>
+                        </div>
+                        <div class="sede-actions">
+                            <a href="https://wa.me/51922354466" class="btn-whatsapp-sede" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                            </a>
+                            <a href="https://maps.app.goo.gl/KkWkQ1SKPhQwf2oe8" class="btn-maps" target="_blank">
+                                <i class="fas fa-directions"></i> Cómo llegar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7" data-aos="fade-left">
+                <div class="sede-mapa">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.475592531699!2d-76.94665892405852!3d-12.070381988112793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c101fbac8ddf%3A0x5f0c5172df5ed0b0!2sI.E.%201278%20MIXTO%20LA%20MOLINA!5e0!3m2!1ses!2spe!4v1710543210000!5m2!1ses!2spe" 
+                        width="100%" 
+                        height="650" 
+                        style="border:0; border-radius: 24px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="mapa-info">
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Jr. Cusco 416, La Molina, Lima 15024</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infraestructura y espacios -->
+    <section class="infraestructura">
+        <div class="container">
+            <h2 class="section-title-sedes" data-aos="fade-up">
+                <i class="fas fa-building me-2"></i>Nuestra Infraestructura
+            </h2>
+            <p class="infraestructura-subtitle" data-aos="fade-up">Espacios diseñados para el aprendizaje y desarrollo integral</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="infra-card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Aula de Innovación Pedagógica</h3>
+                        <p>Equipada con computadoras, kits de robótica y tecnología de vanguardia.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="infra-card">
+                        <i class="fas fa-music"></i>
+                        <h3>Sala de Música</h3>
+                        <p>Espacio para el desarrollo artístico y musical de nuestros estudiantes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="infra-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Biblioteca Tipo I</h3>
+                        <p>Más de 2,000 volúmenes disponibles para consulta y préstamo.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="infra-card">
+                        <i class="fas fa-futbol"></i>
+                        <h3>Campo Deportivo</h3>
+                        <p>Losa deportiva multifuncional para fútbol, básquet y vóley.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="infra-card">
+                        <i class="fas fa-chalkboard"></i>
+                        <h3>Sala de Usos Múltiples (SUM)</h3>
+                        <p>Para eventos, asambleas y actividades culturales.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="500">
+                    <div class="infra-card">
+                        <i class="fas fa-wheelchair"></i>
+                        <h3>Accesibilidad Universal</h3>
+                        <p>Instalaciones adaptadas para personas con discapacidad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3>I.E. 1278 Mixto La Molina</h3>
+                    <p>Formando líderes desde 1966</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Jr. Cuzco Zona 2 405, Etapa II, La Molina</p>
+                    <p><i class="fas fa-phone me-2"></i> +51 922 354 466</p>
+                    <p><i class="fas fa-envelope me-2"></i> mixtolamolina1278@gmail.com</p>
+                    <p><i class="fas fa-user-tie me-2"></i> Director: Elmer Héctor Aguilar Ludeña</p>
+                    <a href="https://wa.me/51922354466" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> Escríbenos al WhatsApp
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Horario de Atención</h4>
+                    <p>Lunes a Viernes: 8:00 am - 5:00 pm</p>
+                    <p>Sábados: 9:00 am - 1:00 pm</p>
+                    <h4 class="mt-3">Turno</h4>
+                    <p><i class="fas fa-sun"></i> Mañana (único turno)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 I.E. 1278 Mixto La Molina - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/51922354466" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/sedes.js"></script>
+</body>
+</html>

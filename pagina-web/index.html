@@ -1,1 +1,285 @@
-# MixtoTrack - Página Web
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.E. Mixto La Molina | Excelencia Educativa</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo-colegio.png" alt="Logo" height="50" class="me-2">
+                <div>
+                    <h2 class="logo-text mb-0">I.E. 1278 Mixto La Molina</h2>
+                    <small class="text-muted">Excelencia educativa</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="matricula.html">Matrícula</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sedes.html">Sedes</a></li>
+                    <li class="nav-item"><a class="btn-mixtotrack ms-2" href="http://localhost:8000/dashboard/" target="_blank"><i class="fas fa-chalkboard-user me-2"></i>MixtoTrack</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section con Parallax -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-aos="fade-up">Bienvenidos a la I.E. Mixto La Molina</h1>
+            <p class="hero-lema" data-aos="fade-up" data-aos-delay="100">"Educación, Tecnología y Futuro"</p>
+            <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">Somos una institución educativa comprometida con la formación integral de nuestros estudiantes, preparándolos para los desafíos del siglo XXI con valores, tecnología y excelencia académica.</p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                <a href="matricula.html" class="btn-primary-custom">Preinscripción 2026</a>
+                <a href="nosotros.html" class="btn-outline-custom">Conócenos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section con contadores animados -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6" data-aos="fade-up">
+                    <div class="stat-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <div class="stat-number"><span class="counter" data-target="937">0</span></div>
+                        <p>Estudiantes (último año)</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-number"><span class="counter" data-target="33">0</span></div>
+                        <p>Promedio por sección</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <i class="fas fa-layer-group"></i>
+                        <div class="stat-number"><span class="counter" data-target="28">0</span></div>
+                        <p>Secciones por grado</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <i class="fas fa-chalkboard-user"></i>
+                        <div class="stat-number"><span class="counter" data-target="46">0</span></div>
+                        <p>Docentes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Por qué elegirnos? -->
+    <section class="razones-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">¿Por qué elegirnos?</h2>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="flip-left">
+                    <div class="razon-card">
+                        <div class="razon-icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Innovación Tecnológica</h3>
+                        <p>Laboratorios equipados, robótica y plataforma educativa MixtoTrack.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="flip-left" data-aos-delay="100">
+                    <div class="razon-card">
+                        <div class="razon-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Formación en Valores</h3>
+                        <p>Programa de desarrollo ético y ciudadanía responsable.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="flip-left" data-aos-delay="200">
+                    <div class="razon-card">
+                        <div class="razon-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Bilingüismo</h3>
+                        <p>Inglés desde inicial con certificaciones internacionales.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="flip-left" data-aos-delay="300">
+                    <div class="razon-card">
+                        <div class="razon-icon"><i class="fas fa-futbol"></i></div>
+                        <h3>Deportes y Arte</h3>
+                        <p>Talleres extracurriculares de fútbol, básquet, danza y música.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos -->
+    <section class="galeria-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nuestro Colegio</h2>
+            <div class="row g-3">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="galeria-item">
+                        <img src="img/galeria1.jpg" alt="Clase de robótica">
+                        <div class="galeria-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="galeria-item">
+                        <img src="img/galeria2.jpg" alt="Taller de arte">
+                        <div class="galeria-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="galeria-item">
+                        <img src="img/galeria3.jpg" alt="Campeonato deportivo">
+                        <div class="galeria-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="galeria-item">
+                        <img src="img/galeria4.jpg" alt="Laboratorio de ciencias">
+                        <div class="galeria-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="galeria-item">
+                        <img src="img/galeria5.jpg" alt="Biblioteca moderna">
+                        <div class="galeria-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="galeria-item">
+                        <img src="img/galeria6.jpg" alt="Patio de recreación">
+                        <div class="galeria-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonios-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Lo que dicen nuestros padres</h2>
+            <div id="testimoniosCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonio-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"La educación integral y el uso de tecnología han hecho una gran diferencia en el aprendizaje de mi hija."</p>
+                            <h4>Ana Pérez</h4>
+                            <span>Madre de familia</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonio-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"Los talleres y el acompañamiento docente son excelentes. Mi hijo ha mejorado mucho sus calificaciones."</p>
+                            <h4>Carlos Gómez</h4>
+                            <span>Padre de familia</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonio-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"La plataforma MixtoTrack nos permite seguir el progreso de nuestros hijos en tiempo real. Increíble."</p>
+                            <h4>Rosa Mendoza</h4>
+                            <span>Madre de familia</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 data-aos="fade-up">¿Listo para formar parte de nuestra comunidad?</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Inscríbete ahora y asegura una vacante para el año 2026</p>
+            <a href="matricula.html" class="btn-cta" data-aos="fade-up" data-aos-delay="200">Solicitar Información</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3>I.E. Mixto La Molina</h3>
+                    <p>Formando líderes desde 1966</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Jr. Cuzco416, La Molina, Peru</p>
+                    <p><i class="fas fa-phone me-2"></i> +51 922354466</p>
+                    <p><i class="fas fa-envelope me-2"></i> mixtolamolina1278@gmail.com</p>
+                    <a href="https://wa.me/922354466" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> Escríbenos al WhatsApp
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Horario de Atención</h4>
+                    <p>Lunes a Viernes: 8:00 am - 5:00 pm</p>
+                    <p>Sábados: 9:00 am - 1:00 pm</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 I.E. Mixto La Molina - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
