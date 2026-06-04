@@ -1,10 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity">
+    android:background="#0E1F5B">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="28dp">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_logo_foreground"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MixtoTrackMobile"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I.E. Privada Mixto La Molina"
+            android:textColor="#99FFFFFF"
+            android:textSize="12sp"
+            android:layout_gravity="center" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:background="#263B8F">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Iniciar sesión"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INGRESAR COMO"
+                android:textColor="#AAFFFFFF"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:id="@+id/rgRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="18dp">
+
+                <RadioButton
+                    android:id="@+id/rbAlumno"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Alumno"
+                    android:textColor="#0E1F5B"
+                    android:textStyle="bold"
+                    android:background="#E8B84B"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbDocente"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Docente"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:background="#334BA3" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CORREO INSTITUCIONAL"
+                android:textColor="#AAFFFFFF"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="usuario@mixtolamolina.edu.pe"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#88FFFFFF"
+                android:background="#334BA3"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONTRASEÑA"
+                android:textColor="#AAFFFFFF"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#88FFFFFF"
+                android:background="#334BA3"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp" />
+
+            <Button
+                android:id="@+id/btnIngresar"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Ingresar →"
+                android:textStyle="bold"
+                android:textColor="#0E1F5B"
+                android:backgroundTint="#E8B84B"
+                android:layout_marginTop="22dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Olvidaste tu contraseña? Recupérala"
+                android:textColor="#99FFFFFF"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
