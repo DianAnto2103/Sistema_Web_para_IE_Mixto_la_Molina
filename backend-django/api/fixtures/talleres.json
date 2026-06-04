@@ -1,0 +1,8 @@
+[
+  {"model": "api.taller", "pk": 1, "fields": {"nombre": "Taller de Matemática", "descripcion": "Refuerzo en operaciones básicas y resolución de problemas", "dia": "Lunes", "hora_inicio": "15:00:00", "hora_fin": "16:30:00", "cupos_totales": 20, "docente": 1}},
+  {"model": "api.taller", "pk": 2, "fields": {"nombre": "Taller de Comunicación", "descripcion": "Refuerzo en comprensión lectora y producción de textos", "dia": "Miércoles", "hora_inicio": "15:00:00", "hora_fin": "16:30:00", "cupos_totales": 20, "docente": 2}},
+  {"model": "api.taller", "pk": 3, "fields": {"nombre": "Taller de Inglés", "descripcion": "Refuerzo en vocabulario y conversación básica", "dia": "Viernes", "hora_inicio": "14:00:00", "hora_fin": "15:30:00", "cupos_totales": 15, "docente": 4}},
+  {"model": "api.taller", "pk": 4, "fields": {"nombre": "Taller de Ciencia", "descripcion": "Refuerzo en biología, física y química básica", "dia": "Martes", "hora_inicio": "15:00:00", "hora_fin": "16:30:00", "cupos_totales": 15, "docente": 3}},
+  {"model": "api.taller", "pk": 5, "fields": {"nombre": "Taller de Arte", "descripcion": "Desarrollo de habilidades artísticas y creatividad", "dia": "Jueves", "hora_inicio": "14:00:00", "hora_fin": "15:30:00", "cupos_totales": 15, "docente": 5}},
+  {"model": "api.taller", "pk": 6, "fields": {"nombre": "Taller de Historia", "descripcion": "Refuerzo en historia del Perú y universal", "dia": "Lunes", "hora_inicio": "16:30:00", "hora_fin": "18:00:00", "cupos_totales": 15, "docente": 5}}
+]

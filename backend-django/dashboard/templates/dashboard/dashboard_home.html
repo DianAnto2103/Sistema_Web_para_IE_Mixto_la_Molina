@@ -11,16 +11,6 @@
             <h1 class="greeting">Buenos días{{ user.get_full_name|default:"!" }}</h1>
             <p class="greeting-subtitle">Panel de control educativo - Dashboard</p>
         </div>
-        <div class="header-right">
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar estudiante, curso o docente...">
-            </div>
-            <button class="filter-btn">
-                <i class="fas fa-sliders-h"></i>
-                <span>Filtros</span>
-            </button>
-        </div>
     </div>
 
     <!-- Stats Grid - 4 tarjetas horizontales -->
@@ -99,7 +89,7 @@
                     <span class="card-badge">{{ promedios_grado|length }} grados</span>
                 </div>
                 <div class="card-content">
-                    <canvas id="promedioGradoChart" data-promedios='{{ promedios_grado|safe }}' style="height: 280px;"></canvas>
+                    <canvas id="promedioGradoChart" data-promedios='{{ promedios_grado_json|safe }}' style="height: 280px;"></canvas>
                 </div>
             </div>
 
@@ -109,7 +99,7 @@
                     <h3><i class="fas fa-chart-line"></i> Evolución de Notas por Bimestre</h3>
                 </div>
                 <div class="card-content">
-                    <canvas id="evolucionChart" data-evolucion='{{ evolucion_data|safe }}' style="height: 280px;"></canvas>
+                    <canvas id="evolucionChart" data-evolucion='{{ evolucion_json|safe }}' style="height: 280px;"></canvas>
                 </div>
             </div>
         </div>

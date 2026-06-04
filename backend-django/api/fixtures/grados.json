@@ -1,0 +1,14 @@
+[
+  {"model": "api.grado", "pk": 1, "fields": {"nombre": "1ro", "nivel": "Primaria"}},
+  {"model": "api.grado", "pk": 2, "fields": {"nombre": "2do", "nivel": "Primaria"}},
+  {"model": "api.grado", "pk": 3, "fields": {"nombre": "3ro", "nivel": "Primaria"}},
+  {"model": "api.grado", "pk": 4, "fields": {"nombre": "4to", "nivel": "Primaria"}},
+  {"model": "api.grado", "pk": 5, "fields": {"nombre": "5to", "nivel": "Primaria"}},
+  {"model": "api.grado", "pk": 6, "fields": {"nombre": "6to", "nivel": "Primaria"}},
+  {"model": "api.grado", "pk": 7, "fields": {"nombre": "1ro", "nivel": "Secundaria"}},
+  {"model": "api.grado", "pk": 8, "fields": {"nombre": "2do", "nivel": "Secundaria"}},
+  {"model": "api.grado", "pk": 9, "fields": {"nombre": "3ro", "nivel": "Secundaria"}},
+  {"model": "api.grado", "pk": 10, "fields": {"nombre": "4to", "nivel": "Secundaria"}},
+  {"model": "api.grado", "pk": 11, "fields": {"nombre": "5to", "nivel": "Secundaria"}},
+  {"model": "api.grado", "pk": 12, "fields": {"nombre": "6to", "nivel": "Secundaria"}}
+]

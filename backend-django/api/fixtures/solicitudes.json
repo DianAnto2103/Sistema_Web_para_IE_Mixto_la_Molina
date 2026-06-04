@@ -1,0 +1,12 @@
+[
+  {"model": "api.solicitudtaller", "pk": 1, "fields": {"alumno": 1, "taller": 1, "fecha_solicitud": "2025-03-10T10:30:00Z", "estado": "aprobado"}},
+  {"model": "api.solicitudtaller", "pk": 2, "fields": {"alumno": 2, "taller": 1, "fecha_solicitud": "2025-03-11T14:15:00Z", "estado": "pendiente"}},
+  {"model": "api.solicitudtaller", "pk": 3, "fields": {"alumno": 3, "taller": 2, "fecha_solicitud": "2025-03-12T09:00:00Z", "estado": "aprobado"}},
+  {"model": "api.solicitudtaller", "pk": 4, "fields": {"alumno": 4, "taller": 2, "fecha_solicitud": "2025-03-13T11:30:00Z", "estado": "rechazado"}},
+  {"model": "api.solicitudtaller", "pk": 5, "fields": {"alumno": 5, "taller": 3, "fecha_solicitud": "2025-03-14T08:45:00Z", "estado": "pendiente"}},
+  {"model": "api.solicitudtaller", "pk": 6, "fields": {"alumno": 6, "taller": 3, "fecha_solicitud": "2025-03-15T13:20:00Z", "estado": "aprobado"}},
+  {"model": "api.solicitudtaller", "pk": 7, "fields": {"alumno": 7, "taller": 4, "fecha_solicitud": "2025-03-16T10:00:00Z", "estado": "pendiente"}},
+  {"model": "api.solicitudtaller", "pk": 8, "fields": {"alumno": 8, "taller": 4, "fecha_solicitud": "2025-03-17T15:30:00Z", "estado": "aprobado"}},
+  {"model": "api.solicitudtaller", "pk": 9, "fields": {"alumno": 9, "taller": 5, "fecha_solicitud": "2025-03-18T12:15:00Z", "estado": "rechazado"}},
+  {"model": "api.solicitudtaller", "pk": 10, "fields": {"alumno": 10, "taller": 5, "fecha_solicitud": "2025-03-19T09:45:00Z", "estado": "aprobado"}}
+]

@@ -1,0 +1,22 @@
+[
+  {"model": "api.curso", "pk": 1, "fields": {"nombre": "Matemática", "descripcion": "Aritmética, geometría y álgebra", "docente": 1}},
+  {"model": "api.curso", "pk": 2, "fields": {"nombre": "Comunicación", "descripcion": "Lectura, escritura y comprensión", "docente": 2}},
+  {"model": "api.curso", "pk": 3, "fields": {"nombre": "Ciencia y Tecnología", "descripcion": "Biología, física y química básica", "docente": 3}},
+  {"model": "api.curso", "pk": 4, "fields": {"nombre": "Inglés", "descripcion": "Vocabulario, gramática y conversación", "docente": 4}},
+  {"model": "api.curso", "pk": 5, "fields": {"nombre": "Historia", "descripcion": "Historia del Perú y universal", "docente": 5}},
+  {"model": "api.curso", "pk": 6, "fields": {"nombre": "Arte", "descripcion": "Arte y creatividad", "docente": 6}},
+  {"model": "api.curso", "pk": 7, "fields": {"nombre": "Música", "descripcion": "Música y expresión artística", "docente": 7}},
+  {"model": "api.curso", "pk": 8, "fields": {"nombre": "Educación Física", "descripcion": "Deporte y salud", "docente": 8}},
+  {"model": "api.curso", "pk": 9, "fields": {"nombre": "Religión", "descripcion": "Formación religiosa", "docente": 9}},
+  {"model": "api.curso", "pk": 10, "fields": {"nombre": "Tutoría", "descripcion": "Orientación académica y personal", "docente": 10}},
+  {"model": "api.curso", "pk": 11, "fields": {"nombre": "Filosofía", "descripcion": "Pensamiento crítico y ética", "docente": 11}},
+  {"model": "api.curso", "pk": 12, "fields": {"nombre": "Economía", "descripcion": "Principios económicos", "docente": 12}},
+  {"model": "api.curso", "pk": 13, "fields": {"nombre": "Robótica", "descripcion": "Programación y robótica educativa", "docente": 13}},
+  {"model": "api.curso", "pk": 14, "fields": {"nombre": "Teatro", "descripcion": "Expresión artística y actuación", "docente": 14}},
+  {"model": "api.curso", "pk": 15, "fields": {"nombre": "Psicología", "descripcion": "Introducción a la psicología", "docente": 15}},
+  {"model": "api.curso", "pk": 16, "fields": {"nombre": "Literatura", "descripcion": "Análisis literario", "docente": 16}},
+  {"model": "api.curso", "pk": 17, "fields": {"nombre": "Geografía", "descripcion": "Geografía física y humana", "docente": 17}},
+  {"model": "api.curso", "pk": 18, "fields": {"nombre": "Biología", "descripcion": "Biología avanzada", "docente": 18}},
+  {"model": "api.curso", "pk": 19, "fields": {"nombre": "Química", "descripcion": "Química general", "docente": 19}},
+  {"model": "api.curso", "pk": 20, "fields": {"nombre": "Física", "descripcion": "Física básica y aplicada", "docente": 20}}
+]

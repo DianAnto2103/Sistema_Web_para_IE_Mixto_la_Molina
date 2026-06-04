@@ -1,0 +1,22 @@
+[
+  {"model": "api.docente", "pk": 1, "fields": {"nombres": "María", "apellidos": "Pérez García", "correo": "maria.perez@colegio.edu"}},
+  {"model": "api.docente", "pk": 2, "fields": {"nombres": "Juan", "apellidos": "Gómez Rojas", "correo": "juan.gomez@colegio.edu"}},
+  {"model": "api.docente", "pk": 3, "fields": {"nombres": "Carmen", "apellidos": "Rojas Martínez", "correo": "carmen.rojas@colegio.edu"}},
+  {"model": "api.docente", "pk": 4, "fields": {"nombres": "Luis", "apellidos": "Mendoza López", "correo": "luis.mendoza@colegio.edu"}},
+  {"model": "api.docente", "pk": 5, "fields": {"nombres": "Patricia", "apellidos": "Flores Torres", "correo": "patricia.flores@colegio.edu"}},
+  {"model": "api.docente", "pk": 6, "fields": {"nombres": "Carlos", "apellidos": "Ramírez Silva", "correo": "carlos.ramirez@colegio.edu"}},
+  {"model": "api.docente", "pk": 7, "fields": {"nombres": "Ana", "apellidos": "Díaz Castro", "correo": "ana.diaz@colegio.edu"}},
+  {"model": "api.docente", "pk": 8, "fields": {"nombres": "Jorge", "apellidos": "Sánchez Ríos", "correo": "jorge.sanchez@colegio.edu"}},
+  {"model": "api.docente", "pk": 9, "fields": {"nombres": "Laura", "apellidos": "Torres Vargas", "correo": "laura.torres@colegio.edu"}},
+  {"model": "api.docente", "pk": 10, "fields": {"nombres": "Ricardo", "apellidos": "Cruz Herrera", "correo": "ricardo.cruz@colegio.edu"}},
+  {"model": "api.docente", "pk": 11, "fields": {"nombres": "Gabriela", "apellidos": "Ortiz Morales", "correo": "gabriela.ortiz@colegio.edu"}},
+  {"model": "api.docente", "pk": 12, "fields": {"nombres": "Fernando", "apellidos": "Rivera Castillo", "correo": "fernando.rivera@colegio.edu"}},
+  {"model": "api.docente", "pk": 13, "fields": {"nombres": "Valentina", "apellidos": "Reyes Jiménez", "correo": "valentina.reyes@colegio.edu"}},
+  {"model": "api.docente", "pk": 14, "fields": {"nombres": "Andrés", "apellidos": "Silva Paredes", "correo": "andres.silva@colegio.edu"}},
+  {"model": "api.docente", "pk": 15, "fields": {"nombres": "Daniela", "apellidos": "Molina Soto", "correo": "daniela.molina@colegio.edu"}},
+  {"model": "api.docente", "pk": 16, "fields": {"nombres": "Sergio", "apellidos": "Vega Salas", "correo": "sergio.vega@colegio.edu"}},
+  {"model": "api.docente", "pk": 17, "fields": {"nombres": "Natalia", "apellidos": "Fuentes Rojas", "correo": "natalia.fuentes@colegio.edu"}},
+  {"model": "api.docente", "pk": 18, "fields": {"nombres": "Hugo", "apellidos": "Iglesias López", "correo": "hugo.iglesias@colegio.edu"}},
+  {"model": "api.docente", "pk": 19, "fields": {"nombres": "Paula", "apellidos": "Arias Benítez", "correo": "paula.arias@colegio.edu"}},
+  {"model": "api.docente", "pk": 20, "fields": {"nombres": "Martín", "apellidos": "Ponce Herrera", "correo": "martin.ponce@colegio.edu"}}
+]

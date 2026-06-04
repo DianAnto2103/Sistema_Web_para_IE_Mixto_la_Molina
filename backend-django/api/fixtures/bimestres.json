@@ -1,0 +1,6 @@
+[
+  {"model": "api.bimestre", "pk": 1, "fields": {"nombre": "Bimestre 1", "fecha_inicio": "2025-03-01", "fecha_fin": "2025-04-30"}},
+  {"model": "api.bimestre", "pk": 2, "fields": {"nombre": "Bimestre 2", "fecha_inicio": "2025-05-01", "fecha_fin": "2025-06-30"}},
+  {"model": "api.bimestre", "pk": 3, "fields": {"nombre": "Bimestre 3", "fecha_inicio": "2025-08-01", "fecha_fin": "2025-09-30"}},
+  {"model": "api.bimestre", "pk": 4, "fields": {"nombre": "Bimestre 4", "fecha_inicio": "2025-10-01", "fecha_fin": "2025-12-15"}}
+]

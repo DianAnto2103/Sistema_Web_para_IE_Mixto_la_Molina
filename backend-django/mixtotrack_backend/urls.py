@@ -21,7 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from api.views import login
 
 urlpatterns = [
-    path('', lambda request: redirect('/api/')),
+    path('', lambda request: redirect('/dashboard/login/')),
     path('admin/', admin.site.urls),
     path('api/login/', login, name='login'), 
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

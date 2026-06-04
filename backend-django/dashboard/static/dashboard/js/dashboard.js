@@ -2,56 +2,75 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ========== GRÁFICO: PROMEDIO POR GRADO ==========
-    const promedioCanvas = document.getElementById('promedioGradoChart');
-    if (promedioCanvas) {
-        const promediosData = promedioCanvas.getAttribute('data-promedios');
-        if (promediosData && promediosData !== '[]') {
-            try {
-                const promedios = JSON.parse(promediosData);
-                if (promedios && promedios.length > 0) {
-                    new Chart(promedioCanvas, {
-                        type: 'bar',
-                        data: {
-                            labels: promedios.map(item => item.grado || 'Sin grado'),
-                            datasets: [{
-                                label: 'Promedio Académico',
-                                data: promedios.map(item => parseFloat(item.promedio) || 0),
-                                backgroundColor: promedios.map(item => {
-                                    const prom = parseFloat(item.promedio) || 0;
-                                    if (prom < 11) return '#DC3545';
-                                    if (prom >= 16) return '#2E7D32';
-                                    return '#FFC107';
-                                }),
-                                borderRadius: 8,
-                                barPercentage: 0.65,
-                                categoryPercentage: 0.8
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: true,
-                            plugins: {
-                                legend: { position: 'top', labels: { font: { size: 12 } } },
-                                tooltip: {
-                                    callbacks: {
-                                        label: function(context) {
-                                            return `Promedio: ${context.raw.toFixed(2)} puntos`;
-                                        }
+// ========== GRÁFICO: PROMEDIO POR GRADO ==========
+const promedioCanvas = document.getElementById('promedioGradoChart');
+if (promedioCanvas) {
+    const promediosData = promedioCanvas.getAttribute('data-promedios');
+    if (promediosData && promediosData !== '[]') {
+        try {
+            const promedios = JSON.parse(promediosData);
+            if (promedios && promedios.length > 0) {
+                
+                // Ordenar por grado (1ro, 2do, 3ro...)
+                const ordenGrados = ['1ro', '2do', '3ro', '4to', '5to', '6to'];
+                promedios.sort((a, b) => {
+                    const numA = parseInt(a.grado) || 0;
+                    const numB = parseInt(b.grado) || 0;
+                    if (numA !== numB) return numA - numB;
+                    // Si mismo número, ordenar por nivel (Primaria antes que Secundaria)
+                    if (a.grado.includes('Primaria') && b.grado.includes('Secundaria')) return -1;
+                    if (a.grado.includes('Secundaria') && b.grado.includes('Primaria')) return 1;
+                    return 0;
+                });
+                
+                new Chart(promedioCanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: promedios.map(item => item.grado || 'Sin grado'),
+                        datasets: [{
+                            label: 'Promedio Académico',
+                            data: promedios.map(item => parseFloat(item.promedio) || 0),
+                            backgroundColor: '#2E7D32',
+                            borderRadius: 4,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: { position: 'top', labels: { font: { size: 11 } } },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Promedio: ${context.raw.toFixed(2)} puntos`;
                                     }
                                 }
+                            }
+                        },
+                        scales: {
+                            y: { 
+                                beginAtZero: true, 
+                                max: 20,
+                                title: { display: true, text: 'Promedio (0-20)', font: { size: 11 } },
+                                grid: { color: '#E9ECEF' }
                             },
-                            scales: {
-                                y: { beginAtZero: true, max: 20, title: { display: true, text: 'Promedio (0-20)' } },
-                                x: { title: { display: true, text: 'Grados' } }
+                            x: { 
+                                title: { display: true, text: 'Grados', font: { size: 11 } },
+                                ticks: { 
+                                    maxRotation: 45, 
+                                    minRotation: 45,
+                                    font: { size: 10 }
+                                }
                             }
                         }
-                    });
-                }
-            } catch(e) { console.error('Error en gráfico de promedios:', e); }
-        }
+                    }
+                });
+            }
+        } catch(e) { console.error('Error en gráfico de promedios:', e); }
     }
-
+}
     // ========== GRÁFICO: EVOLUCIÓN ==========
     const evolucionCanvas = document.getElementById('evolucionChart');
     if (evolucionCanvas) {

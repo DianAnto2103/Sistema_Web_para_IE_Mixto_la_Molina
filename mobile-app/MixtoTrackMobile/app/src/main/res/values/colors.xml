@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <!-- Colores institucionales de Mixto La Molina -->
     <color name="background_school">#F1F8E9</color>
     <color name="primary">#2E7D32</color>
@@ -14,4 +15,17 @@
     <color name="text_secondary">#558B2F</color>
     <color name="text_tertiary">#9E9E9E</color>
     <color name="white">#FFFFFF</color>
+=======
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="navy">#0E1F5B</color>
+    <color name="blue">#1A3BA0</color>
+    <color name="blue_dark">#162970</color>
+    <color name="gold">#E8B84B</color>
+    <color name="soft">#F1F5F9</color>
+    <color name="gray">#64748B</color>
+
+>>>>>>> 5ee7b4cb24a0ee6b4da087ec9e3d0b3cea0e2774
 </resources>

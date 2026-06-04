@@ -39,6 +39,14 @@ def home(request):
     total_talleres = Taller.objects.count()
     total_solicitudes = SolicitudTaller.objects.count()
     total_docentes = Docente.objects.count()
+
+    # ========== PROMEDIO GENERAL ==========
+    resultado_promedio = Calificacion.objects.aggregate(promedio=Avg('nota'))
+    promedio_general = resultado_promedio['promedio']
+    if promedio_general is None:
+        promedio_general = 0
+    else:
+        promedio_general = float(round(promedio_general, 2))
     
     # ========== KPIs ESTRATÉGICOS ==========
     # Calcular promedios por alumno
@@ -49,6 +57,7 @@ def home(request):
             'alumno': alumno,
             'promedio': float(promedio)
         })
+        
     
     # Porcentaje de alumnos destacados (≥16)
     destacados = sum(1 for a in alumnos_con_promedio if a['promedio'] >= 16)
@@ -64,19 +73,38 @@ def home(request):
 
     
     # ========== COMPARATIVAS ==========
-    # Promedios por grado
+    # Promedios por grad
     promedios_grado = []
-    grados = Alumno.objects.values('grado__id', 'grado__nombre', 'grado__nivel').distinct()
-    for item in grados:
-        grado_id = item['grado__id']
-        grado_nombre = item['grado__nombre']
-        grado_nivel = item['grado__nivel']
-        if grado_nombre:
-            texto_grado = f"{grado_nombre} de {grado_nivel}" if grado_nivel else grado_nombre
-            promedio = Calificacion.objects.filter(alumno__grado__id=grado_id).aggregate(promedio=Avg('nota'))['promedio'] or 0
+    
+    orden_grados = [
+        {'nombre': '1ro', 'nivel': 'Primaria'},
+        {'nombre': '2do', 'nivel': 'Primaria'},
+        {'nombre': '3ro', 'nivel': 'Primaria'},
+        {'nombre': '4to', 'nivel': 'Primaria'},
+        {'nombre': '5to', 'nivel': 'Primaria'},
+        {'nombre': '6to', 'nivel': 'Primaria'},
+        {'nombre': '1ro', 'nivel': 'Secundaria'},
+        {'nombre': '2do', 'nivel': 'Secundaria'},
+        {'nombre': '3ro', 'nivel': 'Secundaria'},
+        {'nombre': '4to', 'nivel': 'Secundaria'},
+        {'nombre': '5to', 'nivel': 'Secundaria'},
+        {'nombre': '6to', 'nivel': 'Secundaria'},
+    ]
+    
+    for grado_info in orden_grados:
+        grado = Grado.objects.filter(nombre=grado_info['nombre'], nivel=grado_info['nivel']).first()
+        if grado:
+            promedio = Calificacion.objects.filter(alumno__grado=grado).aggregate(promedio=Avg('nota'))['promedio'] or 0
+            texto_grado = f"{grado.nombre} de {grado.nivel}"
             promedios_grado.append({
                 'grado': texto_grado,
                 'promedio': float(round(promedio, 2))
+            })
+        else:
+            texto_grado = f"{grado_info['nombre']} de {grado_info['nivel']}"
+            promedios_grado.append({
+                'grado': texto_grado,
+                'promedio': 0
             })
         
         # Grado destacado y grado con menor rendimiento
@@ -165,6 +193,7 @@ def home(request):
         'aprobados_count': aprobados,
         'distribucion_notas': distribucion_notas,
         'tendencia': tendencia,
+        'promedio_general': promedio_general,
         
         # Comparativas
         'grado_destacado': grado_destacado,
@@ -313,10 +342,15 @@ def exportar_txt(request):
 
 @login_required(login_url='login')
 def estudiantes_list(request):
+    from django.db.models import Avg
+    from api.models import Alumno, Calificacion
+    
     alumnos = Alumno.objects.all().select_related('grado')
+    
+    # Calcular promedio de CADA alumno (esto va dentro del bucle)
     for alumno in alumnos:
         promedio = Calificacion.objects.filter(alumno=alumno).aggregate(promedio=Avg('nota'))['promedio'] or 0
-        alumno.promedio_general = round(float(promedio), 2)
+        alumno.promedio_general = float(round(promedio, 2))
     
     context = {
         'alumnos': alumnos,
