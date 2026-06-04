@@ -1,0 +1,107 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block page_title %}Ranking Académico{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="ranking-page">
+    <!-- Header con estadísticas -->
+    <div class="ranking-stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon bg-primary-light">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Total Estudiantes</h3>
+                <p class="stat-number">{{ total_alumnos }}</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-success-light">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Promedio General</h3>
+                <p class="stat-number">{{ promedio_general|floatformat:2 }}</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-warning-light">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Mejor Promedio</h3>
+                <p class="stat-number">{{ mejor.promedio_general|floatformat:2 }}</p>
+                <small>{{ mejor.apellidos }}, {{ mejor.nombres }}</small>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-danger-light">
+                <i class="fas fa-chart-simple"></i>
+            </div>
+            <div class="stat-info">
+                <h3>En Riesgo (&#60;11)</h3>
+                <p class="stat-number">{{ riesgo }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 10 Ranking -->
+    <div class="ranking-container">
+        <div class="ranking-header">
+            <h2><i class="fas fa-crown me-2"></i>Top 10 Estudiantes Destacados</h2>
+            <p>Estudiantes con mayor promedio general</p>
+        </div>
+
+        <div class="ranking-list">
+            {% for estudiante in ranking %}
+            <div class="ranking-item {% if forloop.counter == 1 %}first-place{% elif forloop.counter == 2 %}second-place{% elif forloop.counter == 3 %}third-place{% endif %}">
+                <div class="ranking-position">
+                    {% if forloop.counter == 1 %}
+                    <i class="fas fa-medal gold"></i>
+                    <span class="position-number">1</span>
+                    {% elif forloop.counter == 2 %}
+                    <i class="fas fa-medal silver"></i>
+                    <span class="position-number">2</span>
+                    {% elif forloop.counter == 3 %}
+                    <i class="fas fa-medal bronze"></i>
+                    <span class="position-number">3</span>
+                    {% else %}
+                    <span class="position-number">{{ forloop.counter }}</span>
+                    {% endif %}
+                </div>
+                <div class="ranking-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="ranking-info">
+                    <h4>{{ estudiante.apellidos }}, {{ estudiante.nombres }}</h4>
+                    <p>
+                        {{ estudiante.grado.nombre|default:"Sin grado" }} 
+                        {% if estudiante.grado.nivel %}de {{ estudiante.grado.nivel }}{% endif %}
+                        {% if estudiante.seccion %} - Sección {{ estudiante.seccion }}{% endif %}
+                    </p>
+                </div>
+                <div class="ranking-score">
+                    <span class="score-number">{{ estudiante.promedio_general|floatformat:2 }}</span>
+                    <span class="score-label">Promedio</span>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state">
+                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                <p>No hay suficientes datos de calificaciones para mostrar el ranking</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

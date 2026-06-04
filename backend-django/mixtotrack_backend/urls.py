@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.shortcuts import redirect
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from api.views import login
 
 urlpatterns = [
     path('', lambda request: redirect('/api/')),
     path('admin/', admin.site.urls),
-    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/login/', login, name='login'), 
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include('api.urls')),
+    path('dashboard/', include('dashboard.urls')), 
 ]

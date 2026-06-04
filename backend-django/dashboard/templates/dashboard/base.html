@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MixtoTrack - Sistema de Gestión Académica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    <script src="{% static 'dashboard/js/dashboard.js' %}" defer></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static 'dashboard/images/logo.png' %}" alt="Logo" class="logo-img">
+                <h2>MixtoTrack</h2>
+                <p class="subtitle">I.E. Mixto La Molina</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{% url 'home' %}" class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="{% url 'estudiantes_list' %}" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Estudiantes</span>
+                </a>
+
+                <a href="{% url 'ranking' %}" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Ranking Académico</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="{% url 'logout' %}" class="nav-item logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+            
+        </aside>
+
+        <main class="main-area">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>{% block page_title %}Panel de Control{% endblock %}</h1>
+                </div>
+            <div class="user-profile">
+                <i class="fas fa-user-shield avatar-icon"></i>
+                <div class="user-info">
+                    <span class="user-name">{{ user.get_full_name|default:user.username }}</span>
+                    <span class="user-role">Administrador</span>
+                </div>
+            </div>  
+            </header>
+            <div class="content-wrapper">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block page_title %}Rendimiento del Estudiante{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'dashboard/css/styless.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="rendimiento-container">
+    <div class="notas-container">
+        <div class="notas-header">
+            <div class="notas-title">
+                <h3><i class="fas fa-book-open me-2"></i>  Libreta de Notas</h3>
+                <p>{{ alumno.apellidos }}, {{ alumno.nombres }}</p>
+            </div>
+            <div class="notas-actions">
+                <a href="{% url 'exportar_pdf_estudiante' %}?alumno_id={{ alumno.id }}" class="btn-pdf" target="_blank">
+                    <i class="fas fa-file-pdf me-2"></i>Descargar Libreta de Notas (PDF)
+                </a>
+                <a href="{% url 'estudiantes_list' %}" class="btn-volver">
+                    <i class="fas fa-arrow-left me-2"></i>Volver a lista
+                </a>
+            </div>
+        </div>
+
+        <div class="info-estudiante">
+            <div class="info-row">
+                <span class="info-label">Grado y Sección:</span>
+                <span class="info-value">
+                    {% if alumno.grado %}
+                        {{ alumno.grado.nombre }} de {{ alumno.grado.nivel|default:"Sin nivel" }}
+                    {% else %}
+                        -
+                    {% endif %}
+                    - {{ alumno.seccion|default:"-" }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Pestañas de bimestres -->
+        <div class="bimestre-tabs">
+            <a href="?alumno_id={{ alumno.id }}" class="tab {% if not bimestre_seleccionado %}active{% endif %}">
+                Anual
+            </a>
+            {% for bim in bimestres %}
+            <a href="?alumno_id={{ alumno.id }}&bimestre_id={{ bim.id }}" 
+            class="tab {% if bimestre_seleccionado == bim.id %}active{% endif %}">
+                {{ bim.nombre }}
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- Información del bimestre seleccionado -->
+        <div class="bimestre-info">
+            <strong>
+                {% if bimestre_seleccionado %}
+                    Notas del {{ bimestre_seleccionado_nombre }}
+                {% else %}
+                    Notas Anuales (Todos los bimestres)
+                {% endif %}
+            </strong>
+            {% if promedio_bimestre %}
+            <span class="promedio-bimestre">Promedio: {{ promedio_bimestre }}</span>
+            {% endif %}
+        </div>
+
+        <!-- Tabla de notas (filtrada por el bimestre seleccionado) -->
+        {% if calificaciones %}
+        <div class="table-responsive">
+            <table class="notas-table">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Nota</th>
+                        <th>Bimestre</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cal in calificaciones %}
+                    <tr>
+                        <td class="curso-nombre">{{ cal.curso.nombre }}</td>
+                        <td class="nota-cell">
+                            <span class="nota-badge">{{ cal.nota|floatformat:2 }}</span>
+                        </td>
+                        <td>{{ cal.bimestre.nombre|default:"-" }}</td>
+                        <td>
+                            {% if cal.nota >= 14 %}
+                            <span class="estado-aprobado">Aprobado</span>
+                            {% elif cal.nota >= 11 %}
+                            <span class="estado-regular">Regular</span>
+                            {% else %}
+                            <span class="estado-desaprobado">Desaprobado</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Promedio General</strong></td>
+                        <td><strong class="promedio-final">{{ promedio_general|floatformat:2 }}</strong></td>
+                    </tr id="promedio-row">
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- Evolución de notas (gráfico) -->
+        <div class="evolucion-card">
+            <h5><i class="fas fa-chart-line me-2"></i>Evolución de Rendimiento</h5>
+            <canvas id="evolucionChart" height="200"></canvas>
+        </div>
+
+        <div class="resumen-card">
+            <h5><i class="fas fa-chart-line me-2"></i>Resumen de Rendimiento</h5>
+            <div class="resumen-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Total Cursos</span>
+                    <span class="stat-value">{{ total_cursos }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Aprobados</span>
+                    <span class="stat-value text-success">{{ aprobados }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Regulares</span>
+                    <span class="stat-value text-warning">{{ regulares }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Desaprobados</span>
+                    <span class="stat-value text-danger">{{ desaprobados }}</span>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-chalkboard-user fa-4x mb-3"></i>
+            <h5>No hay calificaciones registradas</h5>
+            <p>Este estudiante aún no tiene notas cargadas en el sistema.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const evolucionData = {{ evolucion_json|safe }};
+    const ctx = document.getElementById('evolucionChart').getContext('2d');
+    
+    const labels = [];
+    const datos = [];
+    
+    for (let i = 0; i < evolucionData.length; i++) {
+        labels.push(evolucionData[i].bimestre);
+        datos.push(evolucionData[i].promedio);
+    }
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Promedio',
+                data: datos,
+                borderColor: '#2E7D32',
+                backgroundColor: 'rgba(46,125,50,0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true, max: 20 } }
+        }
+    });
+</script>
+{% endblock %}

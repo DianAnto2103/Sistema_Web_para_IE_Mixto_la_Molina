@@ -1,0 +1,189 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard Principal | MixtoTrack{% endblock %}
+
+{% block content %}
+<div class="dashboard-modern">
+    <!-- Header Mejorado -->
+    <div class="dashboard-header">
+        <div class="header-left">
+            <h1 class="greeting">Buenos días{{ user.get_full_name|default:"!" }}</h1>
+            <p class="greeting-subtitle">Panel de control educativo - Dashboard</p>
+        </div>
+        <div class="header-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar estudiante, curso o docente...">
+            </div>
+            <button class="filter-btn">
+                <i class="fas fa-sliders-h"></i>
+                <span>Filtros</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Grid - 4 tarjetas horizontales -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon bg-primary-light">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Total Alumnos</span>
+                <span class="stat-value">{{ total_alumnos|default:0 }}</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-warning-light">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Docentes</span>
+                <span class="stat-value">{{ total_docentes|default:0 }}</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-info-light">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Cursos Activos</span>
+                <span class="stat-value">{{ total_cursos|default:0 }}</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-success-light">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Promedio General</span>
+                <span class="stat-value">{{ promedio_general|default:"0.0" }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="dashboard-grid">
+        <!-- Columna Izquierda (Principal) -->
+        <div class="grid-left">
+            <!-- Fila 1: Tarjetas horizontales de alumnos -->
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0;">
+                <div class="card" style="background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%); border: none;">
+                    <div class="card-content" style="color: white;">
+                        <span class="stat-label" style="color: rgba(255,255,255,0.8);">Destacados</span>
+                        <span class="stat-value" style="color: white; font-size: 36px;">{{ destacados_count|default:0 }}</span>
+                        <span style="font-size: 12px; opacity: 0.9;">≥16</span>
+                    </div>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%); border: none;">
+                    <div class="card-content" style="color: white;">
+                        <span class="stat-label" style="color: rgba(255,255,255,0.8);">En Riesgo</span>
+                        <span class="stat-value" style="color: white; font-size: 36px;">{{ riesgo_count|default:0 }}</span>
+                        <span style="font-size: 12px; opacity: 0.9;">&lt;11</span>
+                    </div>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%); border: none;">
+                    <div class="card-content" style="color: white;">
+                        <span class="stat-label" style="color: rgba(255,255,255,0.8);">Tasa Aprobados</span>
+                        <span class="stat-value" style="color: white; font-size: 36px;">{{ tasa_aprobados|default:0 }}%</span>
+                        <span style="font-size: 12px; opacity: 0.9;">≥11</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico: Promedio por Grado -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-bar"></i> Promedio por Grado</h3>
+                    <span class="card-badge">{{ promedios_grado|length }} grados</span>
+                </div>
+                <div class="card-content">
+                    <canvas id="promedioGradoChart" data-promedios='{{ promedios_grado|safe }}' style="height: 280px;"></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico: Evolución -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-line"></i> Evolución de Notas por Bimestre</h3>
+                </div>
+                <div class="card-content">
+                    <canvas id="evolucionChart" data-evolucion='{{ evolucion_data|safe }}' style="height: 280px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Derecha (Secundaria) -->
+        <div class="grid-right">
+            <!-- Grado Destacado -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-trophy" style="color: #FFC107;"></i> Grado Destacado</h3>
+                </div>
+                <div class="card-content text-center">
+                    <span class="grado-name">{{ grado_destacado.grado|default:"N/A" }}</span>
+                    <span class="grado-promedio">{{ grado_destacado.promedio|default:"0.0" }}</span>
+                    <span class="grado-label">Promedio General del Grado</span>
+                </div>
+            </div>
+
+            <!-- Distribución de Notas (Pie Chart) -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-pie"></i> Distribución de Notas</h3>
+                </div>
+                <div class="card-content">
+                    <canvas id="distribucionChart" 
+                        data-destacados="{{ distribucion_notas.porcentaje_destacados|default:0 }}"
+                        data-aprobados="{{ distribucion_notas.porcentaje_aprobados|default:0 }}"
+                        data-riesgo="{{ distribucion_notas.porcentaje_riesgo|default:0 }}"
+                        style="height: 240px;"></canvas>
+                </div>
+            </div>
+
+            <!-- Calendario Dinámico -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-calendar-alt"></i> Calendario Académico</h3>
+                </div>
+                <div class="card-content">
+                    <div class="mini-calendar" id="miniCalendario">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" id="prevMonthBtn"><i class="fas fa-arrow-circle-left"></i></button>
+                            <span class="calendar-month" id="calendarMonthYear">Junio 2026</span>
+                            <button class="calendar-nav" id="nextMonthBtn"><i class="fas fa-arrow-circle-right"></i></button>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div class="cal-weekday">L</div><div class="cal-weekday">M</div><div class="cal-weekday">M</div>
+                            <div class="cal-weekday">J</div><div class="cal-weekday">V</div><div class="cal-weekday">S</div><div class="cal-weekday">D</div>
+                        </div>
+                        <div class="calendar-dates" id="calendarDates"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solicitudes de Talleres -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chalkboard"></i> Solicitudes de Talleres</h3>
+                </div>
+                <div class="card-content">
+                    <div class="info-stat">
+                        <span class="info-label"><i class="fas fa-check-circle" style="color: #4CAF50;"></i> Aprobadas</span>
+                        <span class="info-value">{{ solicitudes_aprobadas|default:0 }}</span>
+                    </div>
+                    <div class="info-stat">
+                        <span class="info-label"><i class="fas fa-clock" style="color: #FFC107;"></i> Pendientes</span>
+                        <span class="info-value">{{ solicitudes_pendientes|default:0 }}</span>
+                    </div>
+                    <div class="info-stat">
+                        <span class="info-label"><i class="fas fa-inbox"></i> Total</span>
+                        <span class="info-value">{{ total_solicitudes|default:0 }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

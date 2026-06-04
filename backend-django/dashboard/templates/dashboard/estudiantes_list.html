@@ -1,0 +1,220 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block page_title %}Lista de Estudiantes{% endblock %}
+
+{% block content %}
+<div class="students-list-container">
+    <div class="students-list-header">
+        <h3><i class="fas fa-users"></i> Estudiantes Registrados</h3>
+        <div class="header-actions">
+            <a href="{% url 'estudiante_create' %}" class="btn-agregar">
+                <i class="fas fa-plus"></i> Agregar Estudiante
+            </a>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="buscarEstudiante" placeholder="Buscar por nombre o apellido...">
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-nivel="todos">Todos</button>
+        <button class="filter-btn" data-nivel="Primaria">Primaria</button>
+        <button class="filter-btn" data-nivel="Secundaria">Secundaria</button>
+        <button class="filter-btn-limpiar" id="btnLimpiarFiltros">
+            <i class="fas fa-eraser"></i> Limpiar filtros
+        </button>
+        <button class="filter-btn-excel" id="btnExportarExcel">
+            <i class="fas fa-file-excel"></i> Exportar a Excel
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="students-table" id="tablaEstudiantes">
+            <thead>
+                <tr>
+                    <th data-columna="apellidos" class="sortable">Apellidos <i class="fas fa-sort"></i></th>
+                    <th data-columna="nombres" class="sortable">Nombres <i class="fas fa-sort"></i></th>
+                    <th>Grado</th>
+                    <th>Nivel</th>
+                    <th>Sección</th>
+                    <th data-columna="promedio" class="sortable">Promedio <i class="fas fa-sort"></i></th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                <tr data-nivel="{{ alumno.grado.nivel|default:'' }}" data-apellidos="{{ alumno.apellidos }}" data-nombres="{{ alumno.nombres }}" data-promedio="{{ alumno.promedio_general }}">
+                    <td class="apellido">{{ alumno.apellidos }}</td>
+                    <td class="nombre">{{ alumno.nombres }}</td>
+                    <td>{{ alumno.grado.nombre|default:"-" }}</td>
+                    <td class="nivel-cell">{{ alumno.grado.nivel|default:"-" }}</td>
+                    <td>{{ alumno.seccion|default:"-" }}</td>
+                    <td class="promedio-cell">
+                        <span class="badge-promedio {% if alumno.promedio_general >= 16 %}destacado{% endif %}">
+                            {{ alumno.promedio_general|floatformat:2 }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{% url 'rendimiento_estudiante' %}?alumno_id={{ alumno.id }}" class="btn-ver-notas">
+                            <i class="fas fa-eye"></i> Ver notas
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr class="no-data">
+                    <td colspan="7" class="text-center">No hay estudiantes registrados</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-footer">
+        <span class="resultados-info">
+            Mostrando <span id="resultadosCount">0</span> de <span id="totalCount">{{ alumnos|length }}</span> estudiantes
+        </span>
+    </div>
+</div>
+
+<script>
+    // ========== VARIABLES ==========
+    let nivelSeleccionado = 'todos';
+    let textoBusqueda = '';
+    let columnaOrden = '';
+    let ordenAscendente = true;
+
+    // Elementos DOM
+    const searchInput = document.getElementById('buscarEstudiante');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filas = document.querySelectorAll('#tablaEstudiantes tbody tr:not(.no-data)');
+
+    // ========== ACTUALIZAR CONTADOR ==========
+    function actualizarContador() {
+        const visibleRows = Array.from(document.querySelectorAll('#tablaEstudiantes tbody tr:not(.no-data)')).filter(row => {
+            return row.style.display !== 'none';
+        });
+        document.getElementById('resultadosCount').innerText = visibleRows.length;
+    }
+
+    // ========== APLICAR FILTROS ==========
+    function aplicarFiltros() {
+        const busqueda = textoBusqueda.toLowerCase();
+        const rows = document.querySelectorAll('#tablaEstudiantes tbody tr:not(.no-data)');
+
+        rows.forEach(row => {
+            const apellido = row.getAttribute('data-apellidos')?.toLowerCase() || '';
+            const nombre = row.getAttribute('data-nombres')?.toLowerCase() || '';
+            const nivel = row.getAttribute('data-nivel') || '';
+
+            const coincideNivel = nivelSeleccionado === 'todos' || nivel === nivelSeleccionado;
+            const coincideBusqueda = busqueda === '' || apellido.includes(busqueda) || nombre.includes(busqueda);
+
+            row.style.display = (coincideNivel && coincideBusqueda) ? '' : 'none';
+        });
+
+        actualizarContador();
+    }
+
+    // ========== ORDENAR TABLA ==========
+    function ordenarTabla(columna, tipo) {
+        const tbody = document.querySelector('#tablaEstudiantes tbody');
+        const rows = Array.from(document.querySelectorAll('#tablaEstudiantes tbody tr:not(.no-data)'));
+        
+        rows.sort((a, b) => {
+            let aVal, bVal;
+            
+            if (tipo === 'promedio') {
+                aVal = parseFloat(a.getAttribute('data-promedio')) || 0;
+                bVal = parseFloat(b.getAttribute('data-promedio')) || 0;
+            } else {
+                aVal = a.getAttribute(`data-${columna}`) || '';
+                bVal = b.getAttribute(`data-${columna}`) || '';
+            }
+            
+            if (aVal < bVal) return ordenAscendente ? -1 : 1;
+            if (aVal > bVal) return ordenAscendente ? 1 : -1;
+            return 0;
+        });
+        
+        rows.forEach(row => tbody.appendChild(row));
+        ordenAscendente = !ordenAscendente;
+        actualizarContador();
+    }
+
+    // ========== EVENTOS ==========
+    searchInput.addEventListener('keyup', function() {
+        textoBusqueda = this.value;
+        aplicarFiltros();
+    });
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            nivelSeleccionado = this.getAttribute('data-nivel');
+            aplicarFiltros();
+        });
+    });
+
+    document.getElementById('btnLimpiarFiltros')?.addEventListener('click', function() {
+        searchInput.value = '';
+        textoBusqueda = '';
+        nivelSeleccionado = 'todos';
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.filter-btn[data-nivel="todos"]').classList.add('active');
+        aplicarFiltros();
+    });
+
+    // Ordenar al hacer clic en encabezado
+    document.querySelectorAll('.sortable').forEach(th => {
+        th.addEventListener('click', function() {
+            const columna = this.getAttribute('data-columna');
+            const tipo = columna === 'promedio' ? 'promedio' : 'texto';
+            ordenarTabla(columna, tipo);
+            
+            // Cambiar icono
+            const icon = this.querySelector('i');
+            if (ordenAscendente) {
+                icon.className = 'fas fa-sort-up';
+            } else {
+                icon.className = 'fas fa-sort-down';
+            }
+        });
+    });
+
+    // ========== EXPORTAR A EXCEL ==========
+    document.getElementById('btnExportarExcel').addEventListener('click', function() {
+        const rows = document.querySelectorAll('#tablaEstudiantes tbody tr:not(.no-data)');
+        let csvContent = "\uFEFFApellidos,Nombres,Grado,Nivel,Sección,Promedio\n";
+        
+        rows.forEach(row => {
+            if (row.style.display === 'none') return;
+            const cells = row.querySelectorAll('td');
+            if (cells.length >= 6) {
+                const apellidos = cells[0].innerText.trim();
+                const nombres = cells[1].innerText.trim();
+                const grado = cells[2].innerText.trim();
+                const nivel = cells[3].innerText.trim();
+                const seccion = cells[4].innerText.trim();
+                const promedio = cells[5].innerText.trim().replace(/[^0-9.]/g, '');
+                csvContent += `"${apellidos}","${nombres}","${grado}","${nivel}","${seccion}","${promedio}"\n`;
+            }
+        });
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.setAttribute('download', 'estudiantes_exportados.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    });
+
+    // Inicializar contador
+    actualizarContador();
+</script>
+{% endblock %}

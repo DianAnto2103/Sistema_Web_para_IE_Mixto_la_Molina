@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MixtoTrack - Acceso al Sistema</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700;6..72,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="login-panel">
+            <div class="login-side-left">
+                <div class="login-welcome">
+                    <img src="{% static 'dashboard/images/logo.png' %}" alt="Logo Institución" class="logo-welcome" id="logoInstitucion">
+                    <h2>Bienvenido</h2>
+                    <p>I.E. Mixto La Molina</p>
+                </div>
+            </div>
+            <div class="login-side-right">
+                <div class="login-header-container">
+                    <div class="login-header">
+                        <h3 style="color: #2E7D32; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;">Login</h3>
+                        <h1>Iniciar Sesión</h1>
+                        <p>Accede a tu cuenta</p>
+                    </div>
+                </div>
+                <form method="post" class="login-form" id="loginForm">
+                {% csrf_token %}
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" id="username" placeholder="Usuario" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="login-button" id="btnLogin">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Ingresar</span>
+                </button>
+                {% if error %}
+                <div class="error-alert">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>{{ error }}</p>
+                </div>
+                {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mensaje de bienvenida en consola (solo para desarrollo)
+        console.log('MixtoTrack Login - Sistema de Gestión Académica');
+        
+        // Validación simple antes de enviar
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                e.preventDefault();
+                alert('Por favor, complete todos los campos');
+            }
+        });
+    </script>
+</body>
+</html>

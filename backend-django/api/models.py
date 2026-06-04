@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Alumno(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
     correo = models.EmailField(unique=True)
@@ -20,6 +22,7 @@ class Grado(models.Model):
         return self.nombre
     
 class Docente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
     correo = models.EmailField(unique=True)
