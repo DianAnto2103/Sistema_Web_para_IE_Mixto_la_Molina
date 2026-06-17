@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="80dp"
     android:height="80dp"
@@ -8,10 +8,3 @@
         android:fillColor="#2E7D32"
         android:pathData="M12,3L1,9l11,6 11,-6 -11,-6zM5,13.18v4L12,21l7,-3.82v-4L12,17l-7,-3.82zM12,11.05L5.5,7.5 12,4.45 18.5,7.5 12,11.05z" />
 </vector>
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#E8B84B" />
-    <corners android:radius="18dp" />
-</shape>
->>>>>>> 5ee7b4cb24a0ee6b4da087ec9e3d0b3cea0e2774

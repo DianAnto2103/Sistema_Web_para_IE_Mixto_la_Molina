@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Degradado de fondo (verde institucional) -->
@@ -21,12 +20,3 @@
     </item>
 
 </layer-list>
-=======
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:startColor="#0E1F5B"
-        android:centerColor="#1A3BA0"
-        android:endColor="#162970"
-        android:angle="135" />
-</shape>
->>>>>>> 5ee7b4cb24a0ee6b4da087ec9e3d0b3cea0e2774

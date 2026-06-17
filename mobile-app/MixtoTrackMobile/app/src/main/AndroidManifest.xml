@@ -2,40 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:label="MixtoTrackMobile"
         android:supportsRtl="true"
         android:theme="@style/Theme.MixtoTrackMobile">
-<<<<<<< HEAD
-        <activity android:name=".ui.login.LoginActivity" android:exported="true">
-=======
-
         <activity
-            android:name=".ui.docente.MenuDocenteActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.alumno.MenuAlumnoActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true">
-
->>>>>>> 5ee7b4cb24a0ee6b4da087ec9e3d0b3cea0e2774
+            android:name=".ui.main.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".ui.main.MainActivity" />
-=======
-
->>>>>>> 5ee7b4cb24a0ee6b4da087ec9e3d0b3cea0e2774
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.base.BaseActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
