@@ -11,4 +11,7 @@
     <string name="role_teacher">Docente</string>
     <string name="login_button">Iniciar Sesión</string>
     <string name="help_support">¿Necesitas ayuda? Contacta a soporte</string>
+    <string name="_17">17</string>
+    <string name="aprobado">Aprobado</string>
+    <string name="bimestre_1">Bimestre 1</string>
 </resources>

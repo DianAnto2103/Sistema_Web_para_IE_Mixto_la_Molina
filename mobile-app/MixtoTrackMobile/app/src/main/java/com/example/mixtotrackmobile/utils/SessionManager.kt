@@ -19,6 +19,9 @@ class SessionManager @Inject constructor(
         private const val KEY_NOMBRE = "nombre"
         private const val KEY_GRADO = "grado"
         private const val KEY_IS_LOGGED_IN = "is_logged_in"
+        private const val KEY_DEPARTAMENTO = "departamento"
+        private const val KEY_USER_ID = "user_id"
+
     }
 
 
@@ -34,8 +37,40 @@ class SessionManager @Inject constructor(
         }
     }
 
+    fun guardarDatosPerfil(nombre: String?, grado: String?, departamento: String?) {
+        prefs.edit().apply {
+            nombre?.let { putString(KEY_NOMBRE, it) }
+            grado?.let { putString(KEY_GRADO, it) }
+            departamento?.let { putString(KEY_DEPARTAMENTO, it) }
+            apply()
+        }
+    }
+
     fun guardarRol(rol: UserRole) {
         prefs.edit().putString(KEY_ROL, rol.name).apply()
+    }
+
+    fun guardarSesion(email: String, rol: UserRole, token: String, nombre: String?, grado: String?, userId: Int? = null) {
+        prefs.edit().apply {
+            putString(KEY_EMAIL, email)
+            putString(KEY_ROL, rol.name)
+            putString(KEY_TOKEN, token)
+            putString(KEY_NOMBRE, nombre ?: email.split("@").first())
+            putString(KEY_GRADO, grado ?: "Sin grado asignado")
+            userId?.let { putInt(KEY_USER_ID, it) }
+            putBoolean(KEY_IS_LOGGED_IN, true)
+            apply()
+        }
+    }
+
+    fun guardarUserId(userId: Int) {
+        prefs.edit().putInt(KEY_USER_ID, userId).apply()
+    }
+
+    fun getUserId(): Int? {
+        return if (prefs.contains(KEY_USER_ID)) {
+            prefs.getInt(KEY_USER_ID, 0).takeIf { it > 0 }
+        } else null
     }
 
     fun getRol(): UserRole? {
@@ -49,6 +84,8 @@ class SessionManager @Inject constructor(
     fun getGrado(): String? = prefs.getString(KEY_GRADO, null)
 
     fun getToken(): String? = prefs.getString(KEY_TOKEN, null)
+
+    fun getDepartamento(): String? = prefs.getString(KEY_DEPARTAMENTO, null)
 
     fun isLoggedIn(): Boolean = prefs.getBoolean(KEY_IS_LOGGED_IN, false)
 

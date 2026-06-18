@@ -41,14 +41,16 @@ class MenuAlumnoFragment : BaseFragment<FragmentMenuAlumnoBinding>() {
     private fun setupClickListeners() {
         // Mi Perfil
         binding.cardPerfil.setOnClickListener {
-            Toast.makeText(requireContext(), "Mi Perfil - Próximamente", Toast.LENGTH_SHORT).show()
-            // findNavController().navigate(R.id.action_menuAlumno_to_perfil)
+            findNavController().navigate(R.id.action_menuAlumno_to_perfil)
         }
 
         // Mis Cursos
         binding.cardMisCursos.setOnClickListener {
-            Toast.makeText(requireContext(), "Mis Cursos - Próximamente", Toast.LENGTH_SHORT).show()
-            // findNavController().navigate(R.id.action_menuAlumno_to_misCursos)
+            try {
+                findNavController().navigate(R.id.action_menuAlumno_to_misCursos)
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Solicitar Taller
@@ -59,13 +61,12 @@ class MenuAlumnoFragment : BaseFragment<FragmentMenuAlumnoBinding>() {
 
         // Grupo de Estudio
         binding.cardGrupoEstudio.setOnClickListener {
-            Toast.makeText(requireContext(), "Grupo de Estudio - Próximamente", Toast.LENGTH_SHORT).show()
-            // findNavController().navigate(R.id.action_menuAlumno_to_grupoEstudio)
+            findNavController().navigate(R.id.action_menuAlumno_to_grupoEstudio)
         }
 
         // Notificaciones
         binding.ivNotificaciones.setOnClickListener {
-            Toast.makeText(requireContext(), "Notificaciones - Próximamente", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_menuAlumno_to_notificaciones)
         }
 
         // Cerrar Sesión

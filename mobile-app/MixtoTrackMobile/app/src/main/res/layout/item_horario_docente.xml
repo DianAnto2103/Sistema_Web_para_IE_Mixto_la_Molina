@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Avatar / Ícono -->
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_teacher_avatar"
+            android:background="@drawable/bg_avatar_teacher"
+            android:padding="8dp" />
+
+        <!-- Información -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <!-- Nombre del docente -->
+            <TextView
+                android:id="@+id/tvDocente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prof. Juan Pérez"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark" />
+
+            <!-- Día y horario -->
+            <TextView
+                android:id="@+id/tvDiaHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lunes 3:00 PM - 5:00 PM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp" />
+
+            <!-- Taller -->
+            <TextView
+                android:id="@+id/tvTaller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Taller: Matemáticas"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Estado / Botón -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSeleccionar"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Seleccionar"
+            android:textSize="12sp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/primary" />
+
+        <!-- Estado Ocupado -->
+        <TextView
+            android:id="@+id/tvOcupado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ocupado"
+            android:textSize="12sp"
+            android:padding="4dp"
+            android:background="@drawable/bg_estado_completo"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

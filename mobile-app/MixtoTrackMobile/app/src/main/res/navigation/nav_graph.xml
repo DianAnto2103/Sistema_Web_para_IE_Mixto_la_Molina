@@ -81,7 +81,7 @@
         <!-- Solicitar Taller -->
         <fragment
             android:id="@+id/solicitarTallerFragment"
-            android:name="com.example.mixtotrackmobile.ui.alumno.solicitartaller.SolicitarTallerFragment"
+            android:name="com.example.mixtotrackmobile.ui.alumno.solicitar_taller.SolicitarTallerFragment"
             android:label="Solicitar Taller"
             tools:layout="@layout/fragment_solicitar_taller">
             <action
@@ -107,7 +107,6 @@
                 app:popUpToInclusive="true" />
         </fragment>
 
-
         <!-- Grupo Estudio -->
         <fragment
             android:id="@+id/grupoEstudioFragment"
@@ -128,7 +127,7 @@
             android:label="Mis Cursos"
             tools:layout="@layout/fragment_mis_cursos">
             <action
-                android:id="@+id/action_misCursos_to_rendimiento"
+                android:id="@+id/action_misCursos_to_rendimientoAcademico"
                 app:destination="@id/rendimientoAcademicoFragment" />
             <action
                 android:id="@+id/action_misCursos_to_menuAlumno"
@@ -137,7 +136,7 @@
                 app:popUpToInclusive="true" />
         </fragment>
 
-        <!-- Rendimiento Académico -->
+        <!-- CORREGIDO: Rendimiento Académico -->
         <fragment
             android:id="@+id/rendimientoAcademicoFragment"
             android:name="com.example.mixtotrackmobile.ui.alumno.miscursos.rendimientoacademico.RendimientoAcademicoFragment"
@@ -169,7 +168,6 @@
                 app:destination="@id/loginFragment"
                 app:popUpTo="@id/loginFragment"
                 app:popUpToInclusive="true" />
-
             <action
                 android:id="@+id/action_menuDocente_to_perfil"
                 app:destination="@id/perfilFragment" />

@@ -1,35 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Colores institucionales de Mixto La Molina -->
-    <color name="background_school">#F1F8E9</color>
+    <!-- ====== COLORES PRINCIPALES ====== -->
+    <!-- Color institucional (verde) -->
     <color name="primary">#2E7D32</color>
     <color name="primary_dark">#1B5E20</color>
     <color name="primary_light">#4CAF50</color>
-    <color name="accent">#FFC107</color>
+    <color name="primary_lightest">#E8F5E9</color>
 
-    <!-- Fondo de pantalla -->
+    <!-- ====== COLORES SECUNDARIOS ====== -->
+    <!-- Rojo para acciones negativas o alertas -->
+    <color name="secondary">#E53935</color>
+    <color name="secondary_light">#FFCDD2</color>
+    <color name="accent">#E53935</color>
 
+    <!-- ====== COLORES DE ESTADO ====== -->
+    <color name="success">#2E7D32</color>     <!-- Verde para éxito -->
+    <color name="warning">#FFC107</color>     <!-- Amarillo para advertencia -->
+    <color name="info">#2196F3</color>        <!-- Azul para información -->
+    <color name="error">#E53935</color>       <!-- Rojo para error -->
+
+    <!-- ====== COLORES PARA GRUPOS DE ESTUDIO ====== -->
+    <color name="grupo_disponible">#2E7D32</color>
+    <color name="grupo_lleno">#E53935</color>
+    <color name="grupo_miembro">#1565C0</color>
+    <color name="grupo_creador">#FF8F00</color>
+
+    <!-- ====== COLORES PARA CALIFICACIONES ====== -->
+    <color name="calificacion_alta">#2E7D32</color>     <!-- >= 16 -->
+    <color name="calificacion_media">#FFC107</color>    <!-- 11-15 -->
+    <color name="calificacion_baja">#E53935</color>     <!-- < 11 -->
+    <color name="calificacion_pendiente">#757575</color> <!-- Sin nota -->
+
+    <!-- ====== COLORES PARA TALLERES ====== -->
+    <color name="taller_disponible">#2E7D32</color>
+    <color name="taller_completo">#E53935</color>
+    <color name="taller_pendiente">#FFC107</color>
+    <color name="taller_aprobado">#2E7D32</color>
+    <color name="taller_rechazado">#E53935</color>
+
+    <!-- ====== COLORES PARA ROLES ====== -->
+    <color name="rol_alumno">#2E7D32</color>
+    <color name="rol_docente">#1565C0</color>
+    <color name="rol_admin">#E53935</color>
+
+    <!-- ====== COLORES NEUTROS ====== -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- ====== GRISES ====== -->
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+
+    <!-- ====== COLORES DE TEXTO ====== -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#9E9E9E</color>
+    <color name="text_disabled">#BDBDBD</color>
+
+    <!-- ====== COLORES DE FONDO ====== -->
+    <color name="background_school">#F5F5F5</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="background_input">#FAFAFA</color>
     <color name="background_login">#F5F5F5</color>
 
-    <!-- Colores de texto -->
-    <color name="text_primary">#1B5E20</color>
-    <color name="text_secondary">#558B2F</color>
-    <color name="text_tertiary">#9E9E9E</color>
+    <!-- ====== COLORES DE BORDES ====== -->
+    <color name="border_input">#E0E0E0</color>
+    <color name="border_focus">#2E7D32</color>
+    <color name="border_error">#E53935</color>
+    <color name="border_success">#2E7D32</color>
 
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- ====== COLORES PARA NOTIFICACIONES ====== -->
+    <color name="notification_unread">#2E7D32</color>
+    <color name="notification_read">#9E9E9E</color>
 
-    <color name="navy">#0E1F5B</color>
-    <color name="blue">#1A3BA0</color>
-    <color name="blue_dark">#162970</color>
-    <color name="gold">#E8B84B</color>
-    <color name="soft">#F1F5F9</color>
-    <color name="gray">#64748B</color>
+    <!-- ====== COLORES PARA BOTONES ====== -->
+    <color name="btn_primary">#2E7D32</color>
+    <color name="btn_primary_dark">#1B5E20</color>
+    <color name="btn_secondary">#E53935</color>
+    <color name="btn_success">#2E7D32</color>
+    <color name="btn_danger">#E53935</color>
+    <color name="btn_warning">#FFC107</color>
+    <color name="btn_info">#2196F3</color>
+    <color name="btn_disabled">#BDBDBD</color>
 
+    <!-- ====== COLORES PARA SHADOWS ====== -->
+    <color name="shadow_light">#1A000000</color>
+    <color name="shadow_medium">#33000000</color>
+    <color name="shadow_dark">#4D000000</color>
 
-    <!-- Colores secundarios -->
-    <color name="secondary">#E53935</color>
-    <color name="success">#4CAF50</color>
-    <color name="warning">#FFC107</color>
-
-
+    <!-- ====== COLORES PARA PROGRESS BARS ====== -->
+    <color name="progress_primary">#2E7D32</color>
+    <color name="progress_secondary">#E53935</color>
+    <color name="progress_warning">#FFC107</color>
 </resources>
