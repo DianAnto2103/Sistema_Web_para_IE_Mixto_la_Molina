@@ -21,9 +21,8 @@ class SessionManager @Inject constructor(
         private const val KEY_IS_LOGGED_IN = "is_logged_in"
         private const val KEY_DEPARTAMENTO = "departamento"
         private const val KEY_USER_ID = "user_id"
-
+        private const val KEY_APELLIDO = "apellido"  // ← NUEVO
     }
-
 
     fun guardarSesion(email: String, rol: UserRole, token: String, nombre: String?, grado: String?) {
         prefs.edit().apply {
@@ -91,5 +90,43 @@ class SessionManager @Inject constructor(
 
     fun cerrarSesion() {
         prefs.edit().clear().apply()
+    }
+
+    // ========== MÉTODOS NUEVOS PARA EL MENÚ DOCENTE ==========
+
+    /**
+     * Obtiene el nombre completo del usuario
+     * Para docente: "Juan Pérez"
+     */
+    fun getNombreCompleto(): String {
+        val nombre = getNombre() ?: "Docente"
+        // Si tienes apellido guardado, úsalo
+        val apellido = prefs.getString(KEY_APELLIDO, null)
+        return if (apellido != null) {
+            "$nombre $apellido"
+        } else {
+            nombre
+        }
+    }
+
+    /**
+     * Obtiene el ID del docente
+     * Retorna -1 si no hay sesión o no es docente
+     */
+    fun getDocenteId(): Int {
+        val rol = getRol()
+        val userId = getUserId()
+        return if (rol == UserRole.DOCENTE && userId != null && userId > 0) {
+            userId
+        } else {
+            -1
+        }
+    }
+
+    /**
+     * Verifica si el usuario es docente
+     */
+    fun isDocente(): Boolean {
+        return getRol() == UserRole.DOCENTE
     }
 }

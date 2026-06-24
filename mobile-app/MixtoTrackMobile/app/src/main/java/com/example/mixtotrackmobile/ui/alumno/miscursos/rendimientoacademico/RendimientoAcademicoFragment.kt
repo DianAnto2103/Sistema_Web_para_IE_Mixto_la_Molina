@@ -111,7 +111,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
             // Barra
             val barView = View(requireContext()).apply {
                 layoutParams = LinearLayout.LayoutParams(
-                    dpToPx(36),
+                    dpToPx(36.0),
                     dpToPx(altura)
                 )
                 background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_barra_nota)
