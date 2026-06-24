@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:text="@string/bimestre_1"
+        android:text="Bimestre 1"
         android:textSize="15sp"
         android:textColor="@color/text_primary"
         android:textStyle="bold" />
@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:text="@string/_17"
+        android:text="17"
         android:textSize="18sp"
         android:textColor="@color/primary"
         android:textStyle="bold"
@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.4"
-        android:text="@string/aprobado"
+        android:text="Aprobado"
         android:textSize="14sp"
         android:gravity="end" />
 

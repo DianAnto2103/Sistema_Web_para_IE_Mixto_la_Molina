@@ -134,9 +134,30 @@
                 app:destination="@id/menuAlumnoFragment"
                 app:popUpTo="@id/menuAlumnoFragment"
                 app:popUpToInclusive="true" />
+
+            <action
+                android:id="@+id/action_misCursos_to_detalleCurso"
+                app:destination="@id/detalleCursoFragment" />
         </fragment>
 
-        <!-- CORREGIDO: Rendimiento Académico -->
+        <!-- Detalle Curso -->
+        <fragment
+            android:id="@+id/detalleCursoFragment"
+            android:name="com.example.mixtotrackmobile.ui.alumno.detallecurso.DetalleCursoFragment"
+            android:label="Detalle del Curso"
+            tools:layout="@layout/fragment_detalle_curso">
+            <action
+                android:id="@+id/action_detalleCurso_to_rendimientoAcademico"
+                app:destination="@id/rendimientoAcademicoFragment" />
+            <action
+                android:id="@+id/action_detalleCurso_to_misCursos"
+                app:destination="@id/misCursosFragment"
+                app:popUpTo="@id/misCursosFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+
+
+        <!--  Rendimiento Académico -->
         <fragment
             android:id="@+id/rendimientoAcademicoFragment"
             android:name="com.example.mixtotrackmobile.ui.alumno.miscursos.rendimientoacademico.RendimientoAcademicoFragment"

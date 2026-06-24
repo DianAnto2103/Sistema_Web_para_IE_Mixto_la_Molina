@@ -12,6 +12,7 @@ import com.example.mixtotrackmobile.data.models.request.CrearGrupoRequest
 import com.example.mixtotrackmobile.data.models.request.LoginRequest
 import com.example.mixtotrackmobile.data.models.request.SolicitudTallerRequest
 import com.example.mixtotrackmobile.data.models.response.CursoResponse
+import com.example.mixtotrackmobile.data.models.response.DetalleCursoResponse
 import com.example.mixtotrackmobile.data.models.response.GrupoEstudioResponse
 import com.example.mixtotrackmobile.data.models.response.LoginResponse
 import com.example.mixtotrackmobile.data.models.response.NotificacionResponse
@@ -195,6 +196,12 @@ interface ApiService {
         @Query("curso_id") cursoId: Int
     ): Response<RendimientoResponse>
 
+    // ========== DETALLE CURSO ==========
+    @GET("api/curso/{id}/detalle/")
+    suspend fun getDetalleCurso(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Response<DetalleCursoResponse>
 
 
 }

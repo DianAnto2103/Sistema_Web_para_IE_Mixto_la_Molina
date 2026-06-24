@@ -39,7 +39,7 @@ class MisCursosFragment : BaseFragment<FragmentMisCursosBinding>() {
             }
             try {
                 findNavController().navigate(
-                    R.id.action_misCursos_to_rendimientoAcademico,
+                    R.id.action_misCursos_to_detalleCurso,
                     bundle
                 )
             } catch (e: Exception) {

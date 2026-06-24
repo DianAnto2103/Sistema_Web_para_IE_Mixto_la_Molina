@@ -89,12 +89,12 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
         val layout = binding.layoutGrafico
         layout.removeAllViews()
 
-        val maxNota = 20.0
+        val maxNota = 20f
         val maxAltura = 160f // dp
 
         bimestres.forEach { bimestre ->
-            val nota = bimestre.nota ?: 0.0
-            val altura = (nota / maxNota * maxAltura).coerceAtLeast(10.0) // Mínimo 10dp para visibilidad
+            val nota = (bimestre.nota ?: 0.0).toFloat()
+            val altura = (nota / maxNota * maxAltura).coerceAtLeast(10f)
             val color = when {
                 nota >= 16 -> ContextCompat.getColor(requireContext(), R.color.success)
                 nota >= 11 -> ContextCompat.getColor(requireContext(), R.color.warning)
@@ -111,7 +111,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
             // Barra
             val barView = View(requireContext()).apply {
                 layoutParams = LinearLayout.LayoutParams(
-                    dpToPx(36),
+                    dpToPx(36f),
                     dpToPx(altura)
                 )
                 background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_barra_nota)
@@ -205,7 +205,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
         }
     }
 
-    private fun dpToPx(dp: Double): Int {
+    private fun dpToPx(dp: Float): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
 

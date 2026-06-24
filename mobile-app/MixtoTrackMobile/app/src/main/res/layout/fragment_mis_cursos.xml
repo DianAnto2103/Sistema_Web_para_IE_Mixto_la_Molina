@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/background_school"
     android:padding="16dp"
-    tools:context=".ui.alumno.mis_cursos.MisCursosFragment">
+    tools:context=".ui.alumno.miscursos.MisCursosFragment">
 
     <!-- ========== HEADER ========== -->
     <LinearLayout
