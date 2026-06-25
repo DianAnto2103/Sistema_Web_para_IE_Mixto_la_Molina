@@ -17,4 +17,6 @@ urlpatterns = [
     path('talleres/', views.talleres_list),
     path('solicitar-taller/', views.solicitar_taller),
     path('horarios/', views.horarios_list),
+    path('perfil/', views.PerfilView.as_view(), name='perfil'),
+    path('mis-cursos/', views.mis_cursos, name='mis_cursos'),
 ]

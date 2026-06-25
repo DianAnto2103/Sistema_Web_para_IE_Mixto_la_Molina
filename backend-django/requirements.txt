@@ -1,0 +1,23 @@
+# ========== CORE ==========
+Django==4.2.11
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+
+# ========== AUTENTICACIÓN ==========
+djangorestframework-simplejwt==5.3.0
+
+# ========== BASE DE DATOS ==========
+psycopg2-binary==2.9.9
+
+# ========== UTILIDADES ==========
+python-dotenv==1.0.1
+django-filter==23.5
+
+# ========== DOCUMENTACIÓN API ==========
+drf-yasg==1.21.7
+
+# ========== TESTING ==========
+pytest==8.0.0
+pytest-django==4.8.0
+
+# ========== NOTA: Pillow se instala por separado ==========

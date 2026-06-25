@@ -17,6 +17,12 @@
             app:destination="@id/alumno_navigation"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_login_to_menuDocente"
+            app:destination="@id/docente_navigation"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <!-- ==================== MAIN ACTIVITY ==================== -->
@@ -24,25 +30,6 @@
         android:id="@+id/mainActivity"
         android:name="com.example.mixtotrackmobile.ui.main.MainActivity"
         android:label="Mixto Track" />
-
-    <!-- ==================== NAVEGACIÓN COMÚN (COMPARTIDA) ==================== -->
-    <navigation
-        android:id="@+id/common_navigation"
-        app:startDestination="@id/perfilFragment">
-
-        <fragment
-            android:id="@+id/perfilFragment"
-            android:name="com.example.mixtotrackmobile.ui.common.perfil.PerfilFragment"
-            android:label="Mi Perfil"
-            tools:layout="@layout/fragment_perfil" />
-
-        <fragment
-            android:id="@+id/notificacionesFragment"
-            android:name="com.example.mixtotrackmobile.ui.common.notificaciones.NotificacionesFragment"
-            android:label="Notificaciones"
-            tools:layout="@layout/fragment_notificaciones" />
-
-    </navigation>
 
     <!-- ==================== NAVEGACIÓN ALUMNO ==================== -->
     <navigation
@@ -78,6 +65,20 @@
                 app:destination="@id/misCursosFragment" />
         </fragment>
 
+        <!-- ✅ Perfil (dentro de alumno) -->
+        <fragment
+            android:id="@+id/perfilFragment"
+            android:name="com.example.mixtotrackmobile.ui.common.perfil.PerfilFragment"
+            android:label="Mi Perfil"
+            tools:layout="@layout/fragment_perfil" />
+
+        <!-- ✅ Notificaciones (dentro de alumno) -->
+        <fragment
+            android:id="@+id/notificacionesFragment"
+            android:name="com.example.mixtotrackmobile.ui.common.notificaciones.NotificacionesFragment"
+            android:label="Notificaciones"
+            tools:layout="@layout/fragment_notificaciones" />
+
         <!-- Solicitar Taller -->
         <fragment
             android:id="@+id/solicitarTallerFragment"
@@ -88,7 +89,6 @@
             <action
                 android:id="@+id/action_solicitarTaller_to_misTalleres"
                 app:destination="@id/misTalleresFragment" />
-
             <action
                 android:id="@+id/action_solicitarTaller_to_horarioDocente"
                 app:destination="@id/horarioDocenteFragment" />
@@ -125,6 +125,7 @@
                 app:popUpToInclusive="true" />
         </fragment>
 
+        <!-- Mis Cursos -->
         <fragment
             android:id="@+id/misCursosFragment"
             android:name="com.example.mixtotrackmobile.ui.alumno.miscursos.MisCursosFragment"
@@ -141,18 +142,9 @@
             <action
                 android:id="@+id/action_misCursos_to_detalleCurso"
                 app:destination="@id/detalleCursoFragment" />
-
-            <action
-                android:id="@+id/action_cursos_to_registrarCalificacion"
-                app:destination="@id/registrarCalificacionFragment" />
-
-            <action
-                android:id="@+id/action_cursos_to_menuDocente"
-                app:destination="@id/menuDocenteFragment"
-                app:popUpTo="@id/menuDocenteFragment"
-                app:popUpToInclusive="true" />
         </fragment>
 
+        <!-- Detalle Curso -->
         <fragment
             android:id="@+id/detalleCursoFragment"
             android:name="com.example.mixtotrackmobile.ui.alumno.detallecurso.DetalleCursoFragment"
@@ -178,6 +170,24 @@
                 android:id="@+id/action_rendimiento_to_misCursos"
                 app:destination="@id/misCursosFragment"
                 app:popUpTo="@id/misCursosFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+
+        <!-- Mis Talleres -->
+        <fragment
+            android:id="@+id/misTalleresFragment"
+            android:name="com.example.mixtotrackmobile.ui.alumno.mis_talleres.MisTalleresFragment"
+            android:label="Mis Talleres"
+            tools:layout="@layout/fragment_mis_talleres">
+            <action
+                android:id="@+id/action_misTalleres_to_solicitarTaller"
+                app:destination="@id/solicitarTallerFragment"
+                app:popUpTo="@id/solicitarTallerFragment"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_misTalleres_to_menuAlumno"
+                app:destination="@id/menuAlumnoFragment"
+                app:popUpTo="@id/menuAlumnoFragment"
                 app:popUpToInclusive="true" />
         </fragment>
 
@@ -226,6 +236,21 @@
                 app:destination="@id/horariosFragment" />
         </fragment>
 
+        <!-- ✅ Perfil (dentro de docente) -->
+        <fragment
+            android:id="@+id/perfilFragment"
+            android:name="com.example.mixtotrackmobile.ui.common.perfil.PerfilFragment"
+            android:label="Mi Perfil"
+            tools:layout="@layout/fragment_perfil" />
+
+        <!-- ✅ Notificaciones (dentro de docente) -->
+        <fragment
+            android:id="@+id/notificacionesFragment"
+            android:name="com.example.mixtotrackmobile.ui.common.notificaciones.NotificacionesFragment"
+            android:label="Notificaciones"
+            tools:layout="@layout/fragment_notificaciones" />
+
+        <!-- Cursos -->
         <fragment
             android:id="@+id/cursosFragment"
             android:name="com.example.mixtotrackmobile.ui.docente.cursos.CursosFragment"
@@ -242,6 +267,10 @@
                 app:destination="@id/menuDocenteFragment"
                 app:popUpTo="@id/menuDocenteFragment"
                 app:popUpToInclusive="true" />
+
+            <action
+                android:id="@+id/action_cursos_to_registrarCalificacion"
+                app:destination="@id/registrarCalificacionFragment" />
         </fragment>
 
         <!-- Búsqueda Alumno -->
@@ -283,6 +312,7 @@
                 app:popUpToInclusive="true" />
         </fragment>
 
+        <!-- Detalle Curso Docente -->
         <fragment
             android:id="@+id/detalleCursoDocenteFragment"
             android:name="com.example.mixtotrackmobile.ui.docente.cursos.detallecurso.DetalleCursoDocenteFragment"
@@ -313,24 +343,6 @@
                 android:id="@+id/action_talleres_to_menuDocente"
                 app:destination="@id/menuDocenteFragment"
                 app:popUpTo="@id/menuDocenteFragment"
-                app:popUpToInclusive="true" />
-        </fragment>
-
-        <!-- Mis Talleres (Alumno) -->
-        <fragment
-            android:id="@+id/misTalleresFragment"
-            android:name="com.example.mixtotrackmobile.ui.alumno.mis_talleres.MisTalleresFragment"
-            android:label="Mis Talleres"
-            tools:layout="@layout/fragment_mis_talleres">
-            <action
-                android:id="@+id/action_misTalleres_to_solicitarTaller"
-                app:destination="@id/solicitarTallerFragment"
-                app:popUpTo="@id/solicitarTallerFragment"
-                app:popUpToInclusive="true" />
-            <action
-                android:id="@+id/action_misTalleres_to_menuAlumno"
-                app:destination="@id/menuAlumnoFragment"
-                app:popUpTo="@id/menuAlumnoFragment"
                 app:popUpToInclusive="true" />
         </fragment>
 

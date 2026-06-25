@@ -141,4 +141,4 @@ for alumno_id, _, _, _, _, _ in ALUMNOS:
 with open('api/fixtures/calificaciones_realistas.json', 'w', encoding='utf-8') as f:
     json.dump(calificaciones, f, indent=2, ensure_ascii=False)
 
-print(f"✅ Generadas {len(calificaciones)} calificaciones")
+print(f"Generadas {len(calificaciones)} calificaciones")
