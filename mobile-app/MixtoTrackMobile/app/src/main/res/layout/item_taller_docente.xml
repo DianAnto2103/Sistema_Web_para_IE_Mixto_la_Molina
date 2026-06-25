@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título y estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Taller de Matemáticas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark" />
+
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="2dp"
+                android:text="Activo"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_estado_disponible" />
+
+        </LinearLayout>
+
+        <!-- Curso y horario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvCurso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Matemáticas"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes 3:00 PM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Cupos y solicitudes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvCupos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cupos: 15/20"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvSolicitudes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solicitudes: 5"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <!-- Botones de acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerSolicitudes"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Solicitudes"
+                android:textSize="12sp"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/primary_light" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCambiarEstado"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Estado"
+                android:textSize="12sp"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/warning" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEliminar"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.5"
+                android:layout_marginStart="4dp"
+                android:text="🗑️"
+                android:textSize="14sp"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/secondary"
+                android:paddingHorizontal="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

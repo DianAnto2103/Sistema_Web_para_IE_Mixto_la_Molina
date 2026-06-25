@@ -1,13 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.docente.cursos.busquedaalumno.registrarcalificacion.RegistrarCalificacionFragment">
+    android:background="@color/background_school"
+    android:fillViewport="true"
+    tools:context=".ui.docente.cursos.registrar_calificacion.RegistrarCalificacionFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- ========== HEADER ========== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_back"
+                android:tint="@color/primary_dark"
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Registrar Calificación"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- ========== TARJETA DE INFORMACIÓN ========== -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvAlumnoNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alumno: Juan Pérez"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_dark" />
+
+                <TextView
+                    android:id="@+id/tvCursoNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Curso: Matemáticas"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/tvGradoSeccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5to Secundaria - Sección A"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- ========== SELECCIONAR BIMESTRE ========== -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bimestre"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:startIconDrawable="@drawable/ic_grade"
+            app:startIconTint="@color/primary"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBimestre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========== INGRESAR NOTA ========== -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nota (0 - 20)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:startIconDrawable="@drawable/ic_star"
+            app:startIconTint="@color/primary"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========== BOTÓN REGISTRAR ========== -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Registrar Calificación"
+            android:textSize="14sp"
+            app:cornerRadius="8dp"
+            app:backgroundTint="@color/primary"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ========== PROGRESS BAR ========== -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- ========== MENSAJE DE ÉXITO ========== -->
+        <LinearLayout
+            android:id="@+id/layoutExito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/bg_exito"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_check"
+                android:tint="@color/success" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✅ Calificación registrada exitosamente"
+                android:textSize="16sp"
+                android:textColor="@color/success"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegistrarOtra"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="12dp"
+                android:text="Registrar otra"
+                android:textSize="13sp"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/primary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

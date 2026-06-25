@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -45,11 +46,11 @@ class MenuDocenteFragment : Fragment() {
     }
 
     private fun cargarNombreDocente() {
-        val nombreCompleto = sessionManager.getNombreCompleto()
+        val nombreCompleto = sessionManager.getNombre()
         val rol = sessionManager.getRol()
 
         if (rol == UserRole.DOCENTE) {
-            binding.tvDocenteNombre.text = nombreCompleto
+            binding.tvDocenteNombre.text = nombreCompleto ?: "Docente"
             binding.tvCargando.visibility = View.VISIBLE
         } else {
             binding.tvDocenteNombre.text = "Docente"
@@ -63,9 +64,9 @@ class MenuDocenteFragment : Fragment() {
             findNavController().navigate(R.id.action_menuDocente_to_cursos)
         }
 
-
+        // ===== Buscar Alumnos =====
         binding.cardBuscar.setOnClickListener {
-            findNavController().navigate(R.id.action_menuDocente_to_buscarAlumnos)
+            findNavController().navigate(R.id.action_menuDocente_to_busquedaAlumno)
         }
 
         // ===== Registrar Calificaciones =====
@@ -73,9 +74,13 @@ class MenuDocenteFragment : Fragment() {
             findNavController().navigate(R.id.action_menuDocente_to_registrarCalificacion)
         }
 
-        // ===== Mis Horarios (RF13) =====
+        // ===== Mis Horarios =====
         binding.cardHorarios.setOnClickListener {
-            findNavController().navigate(R.id.action_menuDocente_to_horarios)
+            try {
+                findNavController().navigate(R.id.action_menuDocente_to_horarios)
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // ===== Mi Perfil =====
@@ -89,7 +94,7 @@ class MenuDocenteFragment : Fragment() {
         }
 
         // ===== Cerrar Sesión =====
-        binding.cardCerrarSesion.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             mostrarDialogoCerrarSesion()
         }
     }

@@ -40,13 +40,12 @@ class MenuDocenteViewModel @Inject constructor(
                 // Si tienes el método en DocenteRepository
                 val result = docenteRepository.listarCursosDocente(docenteId)
                 _cursosCount.value = result.size
-                _isLoading.value = false
             } catch (e: Exception) {
                 // Si NO tienes el método, usa un valor por defecto
                 _cursosCount.value = 0
                 _errorMessage.value = e.message ?: "Error al cargar cursos"
-                _isLoading.value = false
             }
+            _isLoading.value = false
         }
     }
 }

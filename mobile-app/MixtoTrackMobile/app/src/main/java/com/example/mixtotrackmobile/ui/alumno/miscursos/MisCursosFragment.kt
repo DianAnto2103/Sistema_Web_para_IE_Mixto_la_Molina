@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mixtotrackmobile.R
 import com.example.mixtotrackmobile.databinding.FragmentMisCursosBinding
-import com.example.mixtotrackmobile.ui.alumno.mis_cursos.MisCursosAdapter
+import com.example.mixtotrackmobile.ui.alumno.miscursos.MisCursosAdapter
 import com.example.mixtotrackmobile.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat

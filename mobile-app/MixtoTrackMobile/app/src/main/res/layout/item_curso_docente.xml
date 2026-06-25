@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Nombre del curso y grado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvNombreCurso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Matemáticas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark" />
+
+            <TextView
+                android:id="@+id/tvGrado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5to Sec"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="2dp"
+                android:background="@drawable/bg_curso" />
+
+        </LinearLayout>
+
+        <!-- Sección y horario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvSeccion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sección: A"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHorario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lunes 3:00 PM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp"
+            android:background="@color/gray_200" />
+
+        <!-- Estadísticas -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Alumnos -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_student_role"
+                    android:tint="@color/primary"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/tvAlumnos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25 alumnos"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <!-- Promedio -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_star"
+                    android:tint="@color/primary"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/tvPromedio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prom. 15.5"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <!-- Aula -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_section"
+                    android:tint="@color/primary"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/tvAula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aula 201"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Botones de acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerAlumnos"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="Ver Alumnos"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalificaciones"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Calificaciones"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/primary_light" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

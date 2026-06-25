@@ -2,6 +2,7 @@ package com.example.mixtotrackmobile.ui.alumno.miscursos.rendimientoacademico
 
 import android.os.Bundle
 import android.view.View
+import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -9,7 +10,6 @@ import androidx.fragment.app.viewModels
 import com.example.mixtotrackmobile.R
 import com.example.mixtotrackmobile.data.models.response.BimestreRendimiento
 import com.example.mixtotrackmobile.databinding.FragmentRendimientoAcademicoBinding
-import com.example.mixtotrackmobile.databinding.ItemBimestreDetalleBinding
 import com.example.mixtotrackmobile.ui.alumno.mis_cursos.rendimiento_academico.RendimientoAcademicoViewModel
 import com.example.mixtotrackmobile.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +26,6 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Obtener argumentos
         val cursoId = arguments?.getInt("curso_id") ?: 0
         val cursoNombre = arguments?.getString("curso_nombre") ?: "Curso"
 
@@ -48,15 +47,12 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
 
         viewModel.rendimiento.observe(viewLifecycleOwner) { rendimiento ->
             rendimiento?.let {
-                // Nombre del curso y docente
                 binding.tvCursoNombre.text = it.cursoNombre
                 binding.tvDocente.text = "Prof. ${it.docente}"
 
-                // Promedio general
                 val promedio = it.promedioGeneral
                 binding.tvPromedioGeneral.text = df.format(promedio)
 
-                // Estado según promedio
                 val (estadoTexto, colorEstado) = when {
                     promedio >= 16 -> Pair("Aprobado", R.color.success)
                     promedio >= 11 -> Pair("En proceso", R.color.warning)
@@ -70,17 +66,14 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
                     ContextCompat.getColor(requireContext(), colorEstado)
                 )
 
-                // Graficar
                 graficarBimestres(it.bimestres)
-
-                // Detalle
                 mostrarDetalleBimestres(it.bimestres)
             }
         }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {
-                android.widget.Toast.makeText(requireContext(), "$it", android.widget.Toast.LENGTH_LONG).show()
+                android.widget.Toast.makeText(requireContext(), "❌ $it", android.widget.Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -90,7 +83,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
         layout.removeAllViews()
 
         val maxNota = 20f
-        val maxAltura = 160f // dp
+        val maxAltura = 160f
 
         bimestres.forEach { bimestre ->
             val nota = (bimestre.nota ?: 0.0).toFloat()
@@ -111,11 +104,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
             // Barra
             val barView = View(requireContext()).apply {
                 layoutParams = LinearLayout.LayoutParams(
-<<<<<<< HEAD
                     dpToPx(36f),
-=======
-                    dpToPx(36.0),
->>>>>>> e76b4bfad6635010fb56b8806d8d4a6a1382e60d
                     dpToPx(altura)
                 )
                 background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_barra_nota)
@@ -124,7 +113,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
 
             // Etiqueta con nota
             val tvNota = TextView(requireContext()).apply {
-                text = if (nota > 0) df.format(nota) else "-"
+                text = if (nota > 0) df.format(nota.toDouble()) else "-"
                 textSize = 12f
                 setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary))
                 layoutParams = LinearLayout.LayoutParams(
@@ -144,7 +133,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
                 )
             }
 
-            // Espaciador para empujar la barra hacia abajo
+            // Espaciador
             val spacer = View(requireContext()).apply {
                 layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -167,12 +156,17 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
         layout.removeAllViews()
 
         bimestres.forEachIndexed { index, bimestre ->
-            val itemBinding = ItemBimestreDetalleBinding.inflate(layoutInflater)
+            val itemView = LayoutInflater.from(requireContext())
+                .inflate(R.layout.item_bimestre_detalle, layout, false)
 
-            itemBinding.tvBimestre.text = "Bimestre ${bimestre.bimestre}"
+            val tvBimestre: TextView = itemView.findViewById(R.id.tvBimestre)
+            val tvNota: TextView = itemView.findViewById(R.id.tvNota)
+            val tvEstado: TextView = itemView.findViewById(R.id.tvEstado)
+
+            tvBimestre.text = "Bimestre ${bimestre.bimestre}"
 
             val nota = bimestre.nota
-            itemBinding.tvNota.text = if (nota != null) df.format(nota) else "-"
+            tvNota.text = if (nota != null) df.format(nota) else "-"
 
             val color = when {
                 nota == null -> ContextCompat.getColor(requireContext(), R.color.text_secondary)
@@ -180,7 +174,7 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
                 nota >= 11 -> ContextCompat.getColor(requireContext(), R.color.warning)
                 else -> ContextCompat.getColor(requireContext(), R.color.secondary)
             }
-            itemBinding.tvNota.setTextColor(color)
+            tvNota.setTextColor(color)
 
             val (estadoTexto, estadoColor) = when {
                 nota == null -> Pair("Pendiente", R.color.text_secondary)
@@ -188,14 +182,13 @@ class RendimientoAcademicoFragment : BaseFragment<FragmentRendimientoAcademicoBi
                 nota >= 11 -> Pair("En proceso", R.color.warning)
                 else -> Pair("Desaprobado", R.color.secondary)
             }
-            itemBinding.tvEstado.text = estadoTexto
-            itemBinding.tvEstado.setTextColor(
+            tvEstado.text = estadoTexto
+            tvEstado.setTextColor(
                 ContextCompat.getColor(requireContext(), estadoColor)
             )
 
-            layout.addView(itemBinding.root)
+            layout.addView(itemView)
 
-            // Separador (excepto último)
             if (index < bimestres.size - 1) {
                 val divider = View(requireContext()).apply {
                     layoutParams = LinearLayout.LayoutParams(

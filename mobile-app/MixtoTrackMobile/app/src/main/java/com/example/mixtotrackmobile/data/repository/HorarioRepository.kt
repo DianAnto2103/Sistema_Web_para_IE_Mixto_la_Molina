@@ -34,4 +34,27 @@ class HorarioRepository @Inject constructor(
             Result.failure(Exception("Error de conexión: ${e.message}"))
         }
     }
+
+    suspend fun actualizarDisponibilidad(horarioId: Int, disponible: Boolean): Result<Unit> {
+        return try {
+            val token = sessionManager.getToken()
+            if (token == null) {
+                return Result.failure(Exception("No hay sesión activa"))
+            }
+
+            val response = apiService.actualizarDisponibilidad(
+                "Bearer $token",
+                horarioId,
+                mapOf("disponible" to disponible)
+            )
+
+            if (response.isSuccessful) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Error al actualizar disponibilidad"))
+            }
+        } catch (e: Exception) {
+            Result.failure(Exception("Error de conexión: ${e.message}"))
+        }
+    }
 }

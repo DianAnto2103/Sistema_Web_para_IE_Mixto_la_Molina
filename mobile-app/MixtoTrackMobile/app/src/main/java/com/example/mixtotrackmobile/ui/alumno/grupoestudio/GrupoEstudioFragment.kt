@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mixtotrackmobile.R
 import com.example.mixtotrackmobile.databinding.FragmentGrupoEstudioBinding
-import com.example.mixtotrackmobile.ui.alumno.grupo_estudio.CrearGrupoDialog
-import com.example.mixtotrackmobile.ui.alumno.grupo_estudio.GrupoEstudioViewModel
-import com.example.mixtotrackmobile.ui.alumno.grupo_estudio.GrupoEstudioAdapter
+import com.example.mixtotrackmobile.ui.alumno.grupoestudio.GrupoEstudioViewModel
+import com.example.mixtotrackmobile.ui.alumno.grupoestudio.CrearGrupoDialog
+import com.example.mixtotrackmobile.ui.alumno.grupoestudio.GrupoEstudioAdapter
 import com.example.mixtotrackmobile.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 

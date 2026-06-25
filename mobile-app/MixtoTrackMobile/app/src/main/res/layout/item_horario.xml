@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Día -->
+        <TextView
+            android:id="@+id/tvDia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Lunes"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark" />
+
+        <!-- Horario -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHoraInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3:00 PM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHoraFin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5:00 PM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Taller (opcional) -->
+        <TextView
+            android:id="@+id/tvTaller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Taller: Matemáticas"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:visibility="gone" />
+
+        <!-- Switch de disponibilidad -->
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchDisponible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:checked="true"
+            android:theme="@style/Theme.MixtoTrackMobile" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

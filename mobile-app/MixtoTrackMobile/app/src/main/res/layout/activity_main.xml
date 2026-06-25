@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-<<<<<<< HEAD
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
 
-    <!-- ========== TOOLBAR (OPCIONAL) ========== -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:titleTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- ========== NAV HOST FRAGMENT ========== -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -29,42 +27,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-=======
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    tools:context=".ui.main.MainActivity">
->>>>>>> e76b4bfad6635010fb56b8806d8d4a6a1382e60d
 
-    <!-- Toolbar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
-        app:titleTextColor="@color/white"
-        app:title="@string/app_name" />
-
-    <!-- NavHostFragment -->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_docente" />
-
-    <!-- BottomNavigationView -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:menu="@menu/menu_docente"
-        app:itemIconTint="@color/primary"
-        app:itemTextColor="@color/primary" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

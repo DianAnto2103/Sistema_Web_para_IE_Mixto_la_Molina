@@ -14,11 +14,3 @@ data class TallerResponse(
     @SerializedName("fecha_inicio") val fechaInicio: String,
     @SerializedName("fecha_fin") val fechaFin: String
 )
-
-data class SolicitudTallerResponse(
-    @SerializedName("id") val id: Int,
-    @SerializedName("taller") val taller: Int,
-    @SerializedName("alumno") val alumno: Int,
-    @SerializedName("estado") val estado: String,  // "pendiente", "aprobado", "rechazado"
-    @SerializedName("fecha_solicitud") val fechaSolicitud: String
-)

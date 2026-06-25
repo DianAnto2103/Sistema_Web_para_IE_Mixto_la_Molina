@@ -1,4 +1,4 @@
-package com.example.mixtotrackmobile.ui.alumno.grupo_estudio
+package com.example.mixtotrackmobile.ui.alumno.grupoestudio
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

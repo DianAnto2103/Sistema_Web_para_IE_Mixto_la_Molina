@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Nombre completo -->
+        <TextView
+            android:id="@+id/tvNombreCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Juan Pérez"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark" />
+
+        <!-- Email y grado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="juan.perez@email.com"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvGrado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5to Secundaria"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Promedio y sección -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvPromedio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Promedio: 15.5"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvSeccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sección: A"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <!-- Botón Ver Calificaciones -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerCalificaciones"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
+            android:text="Ver Calificaciones"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:backgroundTint="@color/primary" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

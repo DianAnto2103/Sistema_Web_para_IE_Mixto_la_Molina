@@ -5,6 +5,9 @@ import com.example.mixtotrackmobile.data.models.entities.Calificacion
 import com.example.mixtotrackmobile.data.models.entities.Curso
 import com.example.mixtotrackmobile.data.models.entities.Horario
 import com.example.mixtotrackmobile.data.models.request.CalificacionRequest
+import com.example.mixtotrackmobile.data.models.response.AlumnoResponse
+import com.example.mixtotrackmobile.data.models.response.CalificacionResponse
+import com.example.mixtotrackmobile.data.models.response.CursoDocenteResponse
 import com.example.mixtotrackmobile.data.models.response.PerfilResponse
 import com.example.mixtotrackmobile.data.network.ApiService
 import com.example.mixtotrackmobile.utils.SessionManager
@@ -17,14 +20,18 @@ class DocenteRepository @Inject constructor(
     private val sessionManager: SessionManager
 ) {
 
-    private suspend fun getToken(): String = "Bearer ${sessionManager.getToken() ?: ""}"
+    private suspend fun getToken(): String? {
+        return sessionManager.getToken()
+    }
 
     // ========== CURSOS ==========
     suspend fun listarCursosDocente(docenteId: Int): List<Curso> {
         return try {
-            val response = apiService.getCursos(getToken())
+            val token = getToken()
+            if (token == null) return emptyList()
+
+            val response = apiService.getCursos("Bearer $token")
             if (response.isSuccessful) {
-                // Curso tiene "docente: Int"
                 response.body()?.filter { it.docente == docenteId } ?: emptyList()
             } else {
                 emptyList()
@@ -34,133 +41,109 @@ class DocenteRepository @Inject constructor(
         }
     }
 
-    // ========== ALUMNOS ==========
-    suspend fun listarAlumnos(): List<Alumno> {
+    // ========== OBTENER CURSOS DEL DOCENTE (CON RESULT) ==========
+    suspend fun getCursosDocente(): Result<List<CursoDocenteResponse>> {
         return try {
-            val response = apiService.getAlumnos(getToken())
-            if (response.isSuccessful) {
-                response.body() ?: emptyList()
-            } else {
-                emptyList()
+            val token = sessionManager.getToken()
+            if (token == null) {
+                return Result.failure(Exception("No hay sesión activa"))
             }
-        } catch (_: Exception) {
-            emptyList()
+
+            val response = apiService.getCursosDocente("Bearer $token")
+
+            if (response.isSuccessful) {
+                Result.success(response.body() ?: emptyList())
+            } else {
+                val errorMsg = when (response.code()) {
+                    401 -> "Sesión expirada"
+                    404 -> "No se encontraron cursos"
+                    else -> "Error al cargar cursos: ${response.code()}"
+                }
+                Result.failure(Exception(errorMsg))
+            }
+        } catch (e: Exception) {
+            Result.failure(Exception("Error de conexión: ${e.message}"))
         }
     }
 
-    suspend fun buscarAlumnos(query: String): List<Alumno> {
+    // ========== BUSCAR ALUMNOS (USANDO API) ==========
+    suspend fun buscarAlumnos(query: String): Result<List<AlumnoResponse>> {
         return try {
-            val alumnos = listarAlumnos()
-            alumnos.filter { alumno ->
-                alumno.nombres.contains(query, ignoreCase = true) ||
-                        alumno.apellidos.contains(query, ignoreCase = true)
+            val token = sessionManager.getToken()
+            if (token == null) {
+                return Result.failure(Exception("No hay sesión activa"))
             }
-        } catch (_: Exception) {
-            emptyList()
+
+            if (query.length < 2) {
+                return Result.success(emptyList())
+            }
+
+            val response = apiService.buscarAlumnos("Bearer $token", query)
+
+            if (response.isSuccessful) {
+                Result.success(response.body() ?: emptyList())
+            } else {
+                val errorMsg = when (response.code()) {
+                    401 -> "Sesión expirada"
+                    404 -> "No se encontraron alumnos"
+                    else -> "Error al buscar alumnos: ${response.code()}"
+                }
+                Result.failure(Exception(errorMsg))
+            }
+        } catch (e: Exception) {
+            Result.failure(Exception("Error de conexión: ${e.message}"))
         }
     }
 
     // ========== CALIFICACIONES ==========
-    suspend fun obtenerCalificacionesAlumno(alumnoId: Int): List<Calificacion> {
-        return try {
-            val response = apiService.getCalificaciones(getToken(), alumnoId)
-            if (response.isSuccessful) {
-                response.body() ?: emptyList()
-            } else {
-                emptyList()
-            }
-        } catch (_: Exception) {
-            emptyList()
-        }
-    }
-
-    suspend fun crearCalificacion(
+    suspend fun registrarCalificacion(
         alumnoId: Int,
         cursoId: Int,
         bimestre: Int,
-        nota: Double,
-        observacion: String?
-    ): Calificacion? {
+        nota: Double
+    ): Result<CalificacionResponse> {
         return try {
+            val token = sessionManager.getToken()
+            if (token == null) {
+                return Result.failure(Exception("No hay sesión activa"))
+            }
+
+            if (nota < 0 || nota > 20) {
+                return Result.failure(Exception("La nota debe estar entre 0 y 20"))
+            }
+
             val request = CalificacionRequest(
-                alumno = alumnoId,
-                curso = cursoId,
-                nota = nota,
-                bimestre = bimestre
+                alumnoId = alumnoId,
+                cursoId = cursoId,
+                bimestre = bimestre,
+                nota = nota
             )
-            val response = apiService.createCalificacion(getToken(), request)
-            if (response.isSuccessful) {
-                response.body()
-            } else {
-                null
-            }
-        } catch (_: Exception) {
-            null
-        }
-    }
 
-    suspend fun actualizarCalificacion(
-        id: Int,
-        alumnoId: Int,
-        cursoId: Int,
-        bimestre: Int,
-        nota: Double,
-        observacion: String?
-    ): Calificacion? {
-        return try {
-            val request = CalificacionRequest(
-                alumno = alumnoId,
-                curso = cursoId,
-                nota = nota,
-                bimestre = bimestre
-            )
-            val response = apiService.updateCalificacion(getToken(), id, request)
-            if (response.isSuccessful) {
-                response.body()
-            } else {
-                null
-            }
-        } catch (_: Exception) {
-            null
-        }
-    }
+            val response = apiService.registrarCalificacion("Bearer $token", request)
 
-    suspend fun eliminarCalificacion(id: Int): Boolean {
-        return try {
-            val response = apiService.deleteCalificacion(getToken(), id)
-            response.isSuccessful
-        } catch (_: Exception) {
-            false
-        }
-    }
-
-    // ========== HORARIOS ==========
-    suspend fun listarHorariosDocente(docenteId: Int): List<Horario> {
-        return try {
-            val response = apiService.getHorarios(getToken(), docenteId)
             if (response.isSuccessful) {
-                response.body()?.map { horarioResponse ->
-                    Horario(
-                        id = horarioResponse.id,
-                        docente = horarioResponse.docenteId,  // ← docenteId (Int)
-                        dia = horarioResponse.dia,            // ← dia (String)
-                        hora_inicio = horarioResponse.horaInicio,
-                        hora_fin = horarioResponse.horaFin,
-                        curso = null
-                    )
-                } ?: emptyList()
+                Result.success(response.body() ?: throw Exception("Respuesta vacía"))
             } else {
-                emptyList()
+                val errorMsg = when (response.code()) {
+                    400 -> "Datos inválidos. Verifica los campos."
+                    404 -> "Alumno o curso no encontrado"
+                    409 -> "Ya existe una calificación para este bimestre"
+                    else -> "Error al registrar calificación: ${response.code()}"
+                }
+                Result.failure(Exception(errorMsg))
             }
-        } catch (_: Exception) {
-            emptyList()
+        } catch (e: Exception) {
+            Result.failure(Exception("Error de conexión: ${e.message}"))
         }
     }
 
     // ========== PERFIL ==========
     suspend fun obtenerPerfilDocente(): PerfilResponse? {
         return try {
-            val response = apiService.getPerfil(getToken())
+            val token = getToken()
+            if (token == null) return null
+
+            val response = apiService.getPerfil("Bearer $token")
             if (response.isSuccessful) {
                 response.body()
             } else {

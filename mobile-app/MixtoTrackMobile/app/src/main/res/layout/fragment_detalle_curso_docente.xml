@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_school"
+    android:padding="16dp"
+    tools:context=".ui.docente.cursos.detallecurso.DetalleCursoDocenteFragment">
+
+    <!-- ========== HEADER ========== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/primary_dark"
+            android:padding="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Detalle del Curso"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- ========== INFORMACIÓN DEL CURSO ========== -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvNombreCurso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Matemáticas"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark" />
+
+            <TextView
+                android:id="@+id/tvGradoSeccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5to Secundaria - Sección A"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_time"
+                        android:tint="@color/text_secondary"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvHorario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lunes 3:00 PM"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_section"
+                        android:tint="@color/text_secondary"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvAula"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aula 201"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTotalAlumnos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25 alumnos"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- ========== PROGRESS BAR ========== -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+    <!-- ========== LISTA DE ALUMNOS ========== -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista de Alumnos"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_dark"
+        android:layout_marginBottom="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAlumnos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        tools:listitem="@layout/item_alumno_detalle_curso" />
+
+    <!-- ========== VACÍO ========== -->
+    <LinearLayout
+        android:id="@+id/layoutVacio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_student_empty"
+            android:tint="@color/text_secondary"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No hay alumnos en este curso"
+            android:textSize="18sp"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Nombre del taller -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del taller"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Curso -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Curso"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCurso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Descripción -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Descripción"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="3" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Horario -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Horario (ej: Lunes 3:00 PM - 5:00 PM)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etHorario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Fecha Inicio -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Fecha de inicio (YYYY-MM-DD)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFechaInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:hint="2024-01-15" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Fecha Fin -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Fecha de fin (YYYY-MM-DD)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFechaFin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:hint="2024-02-15" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Cupos -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Cupos disponibles"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:startIconDrawable="@drawable/ic_student_role"
+            app:startIconTint="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCupos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="20" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+</ScrollView>

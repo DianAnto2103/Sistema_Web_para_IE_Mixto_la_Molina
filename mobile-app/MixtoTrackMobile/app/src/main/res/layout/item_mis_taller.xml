@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título y estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Taller de Matemáticas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark" />
+
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="2dp"
+                android:text="Pendiente"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_estado_pendiente" />
+
+        </LinearLayout>
+
+        <!-- Docente y horario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvDocente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Prof. Juan Pérez"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes 3:00 PM"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Fecha de solicitud -->
+        <TextView
+            android:id="@+id/tvFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solicitado: 15/06/2024"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="4sp" />
+
+        <!-- Motivo (si es rechazado) -->
+        <TextView
+            android:id="@+id/tvMotivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Motivo: Cupos completos"
+            android:textColor="@color/secondary"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

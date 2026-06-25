@@ -5,22 +5,26 @@ import com.example.mixtotrackmobile.data.models.entities.Bimestre
 import com.example.mixtotrackmobile.data.models.entities.Calificacion
 import com.example.mixtotrackmobile.data.models.entities.Curso
 import com.example.mixtotrackmobile.data.models.entities.Docente
-import com.example.mixtotrackmobile.data.models.entities.Horario
-import com.example.mixtotrackmobile.data.models.entities.Taller
 import com.example.mixtotrackmobile.data.models.request.CalificacionRequest
 import com.example.mixtotrackmobile.data.models.request.CrearGrupoRequest
+import com.example.mixtotrackmobile.data.models.request.CrearTallerRequest
 import com.example.mixtotrackmobile.data.models.request.LoginRequest
 import com.example.mixtotrackmobile.data.models.request.SolicitudTallerRequest
+import com.example.mixtotrackmobile.data.models.response.AlumnoResponse
+import com.example.mixtotrackmobile.data.models.response.CalificacionResponse
+import com.example.mixtotrackmobile.data.models.response.CursoDocenteResponse
 import com.example.mixtotrackmobile.data.models.response.CursoResponse
+import com.example.mixtotrackmobile.data.models.response.DetalleCursoDocenteResponse
 import com.example.mixtotrackmobile.data.models.response.DetalleCursoResponse
 import com.example.mixtotrackmobile.data.models.response.GrupoEstudioResponse
 import com.example.mixtotrackmobile.data.models.response.LoginResponse
 import com.example.mixtotrackmobile.data.models.response.NotificacionResponse
 import com.example.mixtotrackmobile.data.models.response.PerfilResponse
-import com.example.mixtotrackmobile.data.models.response.SolicitudTallerResponse
 import com.example.mixtotrackmobile.data.models.response.TallerResponse
 import com.example.mixtotrackmobile.data.models.response.HorarioResponse
 import com.example.mixtotrackmobile.data.models.response.RendimientoResponse
+import com.example.mixtotrackmobile.data.models.response.SolicitudTallerResponse
+import com.example.mixtotrackmobile.data.models.response.TallerDocenteResponse
 
 import retrofit2.Response
 import retrofit2.http.*
@@ -69,17 +73,12 @@ interface ApiService {
     ): Response<List<CursoResponse>>
 
     // ========== CALIFICACIONES ==========
-    @GET("api/calificaciones/")
-    suspend fun getCalificaciones(
-        @Header("Authorization") token: String,
-        @Query("alumno") alumnoId: Int? = null
-    ): Response<List<Calificacion>>
-
     @POST("api/calificaciones/")
-    suspend fun createCalificacion(
+    suspend fun registrarCalificacion(
         @Header("Authorization") token: String,
         @Body request: CalificacionRequest
-    ): Response<Calificacion>
+    ): Response<CalificacionResponse>
+
 
     @PUT("api/calificaciones/{id}/")
     suspend fun updateCalificacion(
@@ -93,6 +92,13 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): Response<Unit>
+
+    // ========== CALIFICACIONES (adicional) ==========
+    @GET("api/calificaciones/")
+    suspend fun getCalificaciones(
+        @Header("Authorization") token: String,
+        @Query("alumno") alumnoId: Int
+    ): Response<List<CalificacionResponse>>
 
     // ========== TALLERES ==========
     @GET("api/talleres/")
@@ -117,12 +123,46 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<List<SolicitudTallerResponse>>
 
+
+    // ========== TALLERES (DOCENTE) ==========
+    @GET("api/docente/talleres/")
+    suspend fun getTalleresDocente(
+        @Header("Authorization") token: String
+    ): Response<List<TallerDocenteResponse>>
+
+
+    @POST("api/docente/talleres/")
+    suspend fun crearTaller(
+        @Header("Authorization") token: String,
+        @Body request: CrearTallerRequest
+    ): Response<TallerDocenteResponse>
+
+    @PUT("api/docente/talleres/{id}/estado/")
+    suspend fun cambiarEstadoTaller(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Body request: Map<String, String>
+    ): Response<Unit>
+
+    @DELETE("api/docente/talleres/{id}/")
+    suspend fun eliminarTaller(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Response<Unit>
+
     // ========== HORARIOS ==========
     @GET("api/horarios/")
     suspend fun getHorarios(
         @Header("Authorization") token: String,
         @Query("docente") docenteId: Int? = null
     ): Response<List<HorarioResponse>>
+
+    @PUT("api/horarios/{id}/disponibilidad/")
+    suspend fun actualizarDisponibilidad(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Body request: Map<String, Boolean>
+    ): Response<Unit>
 
     // ========== BIMESTRES ==========
     @GET("api/bimestres/")
@@ -141,6 +181,18 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): Response<Docente>
+
+    @GET("api/docente/cursos/")
+    suspend fun getCursosDocente(
+        @Header("Authorization") token: String
+    ): Response<List<CursoDocenteResponse>>
+
+    // ========== DETALLE CURSO DOCENTE ==========
+    @GET("api/docente/curso/{id}/detalle/")
+    suspend fun getDetalleCursoDocente(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Response<DetalleCursoDocenteResponse>
 
     // ========== NOTIFICACIONES ==========
     @GET("api/notificaciones/")
@@ -203,5 +255,12 @@ interface ApiService {
         @Path("id") id: Int
     ): Response<DetalleCursoResponse>
 
+
+    // ========== BUSCAR ALUMNOS ==========
+    @GET("api/buscar-alumnos/")
+    suspend fun buscarAlumnos(
+        @Header("Authorization") token: String,
+        @Query("q") query: String
+    ): Response<List<AlumnoResponse>>
 
 }

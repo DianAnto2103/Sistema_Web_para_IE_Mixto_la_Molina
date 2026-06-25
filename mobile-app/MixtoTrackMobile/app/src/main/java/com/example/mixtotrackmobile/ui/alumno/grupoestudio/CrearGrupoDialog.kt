@@ -1,4 +1,4 @@
-package com.example.mixtotrackmobile.ui.alumno.grupo_estudio
+package com.example.mixtotrackmobile.ui.alumno.grupoestudio
 
 import android.app.Dialog
 import android.os.Bundle

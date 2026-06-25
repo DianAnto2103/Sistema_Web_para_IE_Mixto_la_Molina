@@ -1,4 +1,4 @@
-package com.example.mixtotrackmobile.ui.alumno.mis_cursos
+package com.example.mixtotrackmobile.ui.alumno.miscursos
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,4 +1,4 @@
-package com.example.mixtotrackmobile.ui.alumno.solicitar_taller
+package com.example.mixtotrackmobile.ui.alumno.solicitartaller
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

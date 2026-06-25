@@ -1,9 +1,10 @@
-package com.example.mixtotrackmobile.ui.alumno.solicitar_taller
+package com.example.mixtotrackmobile.ui.alumno.solicitartaller
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mixtotrackmobile.R
 import com.example.mixtotrackmobile.data.models.response.TallerResponse
@@ -41,7 +42,7 @@ class SolicitarTallerFragment : BaseFragment<FragmentSolicitarTallerBinding>() {
 
     private fun setupListeners() {
         binding.tvMisTalleres.setOnClickListener {
-            Toast.makeText(requireContext(), "Mis talleres - Próximamente", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_solicitarTaller_to_misTalleres)
         }
     }
 
